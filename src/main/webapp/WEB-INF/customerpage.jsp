@@ -1,12 +1,12 @@
 <%@ page import="UtilHelpers.Quantity" %>
-<%@ page import="java.util.List" %>
+<%@ page import="UtilHelpers.ToppingBottom" %>
+<%@ page import="FunctionLayer.Bottom" %>
+<%@ page import="FunctionLayer.Topping" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<% request.setAttribute("quantitylist", Quantity.getQuantity());%>
-<%@ page import="DB.BottomMapper" %>
-<%@ page import="DB.ToppingMapper" %>
-<% request.setAttribute("bottomlist", BottomMapper.getAllBottoms()); %>
-<% request.setAttribute("toppinglist", ToppingMapper.getAllToppings()); %>
+<%--<% request.setAttribute("quantitylist", Quantity.getQuantity());%>--%>
+<%--<% request.setAttribute("bottomlist", ToppingBottom.getBottoms()); %>--%>
+<%--<% request.setAttribute("toppinglist", ToppingBottom.getToppings()); %>--%>
 
 
 <!DOCTYPE html>
@@ -32,13 +32,15 @@
             </c:forEach>
         </select>
 
+        <br>
+
         <label for="topping">Top</label>
         <select class="form-control" id="topping" name="topping">
             <c:forEach var="topping" items="${requestScope.toppinglist}">
                 <option>${topping}</option>
             </c:forEach>
         </select>
-
+        <br>
         <label for="quantity">Antal</label>
         <select class="form-control" id="quantity" name="quantity">
             <c:forEach var="quantity" items="${requestScope.quantitylist}">
