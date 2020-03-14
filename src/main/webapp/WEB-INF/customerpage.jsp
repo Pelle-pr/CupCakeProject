@@ -2,7 +2,11 @@
 <%@ page import="java.util.List" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<% request.setAttribute("arraylist", Quantity.getQuantity());%>
+<% request.setAttribute("quantitylist", Quantity.getQuantity());%>
+<%@ page import="DB.BottomMapper" %>
+<%@ page import="DB.ToppingMapper" %>
+<% request.setAttribute("bottomlist", BottomMapper.getAllBottoms()); %>
+<% request.setAttribute("toppinglist", ToppingMapper.getAllToppings()); %>
 
 
 <!DOCTYPE html>
@@ -21,21 +25,23 @@
     <div class="form-group">
 
 
-        <%--        <label for="bottom">Bund</label>--%>
-        <%--        <select class="form-control" id="bottom" name="bottom">--%>
-        <%--            <c:forEach var="bottom" items="${requestScope.arraylist}">--%>
-        <%--            <option>${bottom}</option>--%>
-        <%--            </c:forEach>--%>
+        <label for="bottom">Bund</label>
+        <select class="form-control" id="bottom" name="bottom">
+            <c:forEach var="bottom" items="${requestScope.bottomlist}">
+                <option>${bottom}</option>
+            </c:forEach>
+        </select>
 
-        <%--            <label for="topping">Top</label>--%>
-        <%--            <select class="form-control" id="topping" name="topping">--%>
-        <%--                <c:forEach var="topping" items="${requestScope.arraylist}">--%>
-        <%--                <option>${topping}</option>--%>
-        <%--                </c:forEach>--%>
+        <label for="topping">Top</label>
+        <select class="form-control" id="topping" name="topping">
+            <c:forEach var="topping" items="${requestScope.toppinglist}">
+                <option>${topping}</option>
+            </c:forEach>
+        </select>
 
         <label for="quantity">Antal</label>
         <select class="form-control" id="quantity" name="quantity">
-            <c:forEach var="quantity" items="${requestScope.arraylist}">
+            <c:forEach var="quantity" items="${requestScope.quantitylist}">
                 <option>${quantity}</option>
             </c:forEach>
 
