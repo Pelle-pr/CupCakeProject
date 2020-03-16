@@ -12,10 +12,6 @@ public class Bottom {
         this.price = price;
     }
 
-    public Bottom(String name, int price) {
-        this.name = name;
-        this.price = price;
-    }
 
     public Bottom (String name) {
         this.name = name;

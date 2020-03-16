@@ -16,15 +16,16 @@ public class BottomMapper {
 
         ArrayList<Bottom> bottomList = new ArrayList<>();
 
-        String sql = "SELECT name, price FROM cupcake.bottom";
+        String sql = "SELECT * FROM cupcake.bottom";
         Connection con = Connector.connection();
         try  (  PreparedStatement ps = con.prepareStatement(sql);
                 ResultSet resultSet = ps.executeQuery(); )
         {
             while (resultSet.next()) {
+                int bottom_id = resultSet.getInt("bottom_id");
                 String name = resultSet.getString("name");
                 int price = resultSet.getInt("price");
-                Bottom newBottom = new Bottom(name, price);
+                Bottom newBottom = new Bottom(bottom_id,name, price);
                 bottomList.add(newBottom);
             }
         } catch (SQLException e) {

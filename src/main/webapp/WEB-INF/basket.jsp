@@ -15,7 +15,7 @@
 
 <ol>
     <c:forEach var="cupcake" items="${sessionScope.basket}">
-        <li>${cupcake.cupCake.bottom.name.toString()}, ${cupcake.cupCake.topping.name.toString()}, ${cupcake.cupCake.quantity}</li>
+        <li>${cupcake.cupCake.bottom.name}, ${cupcake.cupCake.topping.name}, ${cupcake.cupCake.quantity},${cupcake.cupCake.sum}</li>
         <br>
 
     </c:forEach>

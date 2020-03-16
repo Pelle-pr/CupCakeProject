@@ -17,9 +17,10 @@ public class NewCupCake extends Command {
 
         HttpSession session = request.getSession();
 
-       Bottom bottom = new Bottom(request.getParameter("bottom"));
-       Topping topping = new Topping(request.getParameter("topping"));
-       int quantity = Integer.parseInt(request.getParameter("quantity"));
+        Bottom bottom = new Bottom(request.getParameter("bottom"));
+        Topping topping = new Topping(request.getParameter("topping"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+
        CupCake cupCake = new CupCake(bottom,topping,quantity);
 
         Basket basket = new Basket(cupCake);

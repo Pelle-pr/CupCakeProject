@@ -12,10 +12,6 @@ public class Topping {
         this.price = price;
     }
 
-    public Topping(String name, int price) {
-        this.name = name;
-        this.price = price;
-    }
 
     public Topping(String name) {
         this.name = name;

@@ -15,15 +15,16 @@ public class ToppingMapper {
 
         ArrayList<Topping> toppingList = new ArrayList<>();
         Connection con = Connector.connection();
-        String sql = "SELECT name, price FROM cupcake.topping";
+        String sql = "SELECT * FROM cupcake.topping";
         try (
              PreparedStatement ps = con.prepareStatement(sql);
              ResultSet resultSet = ps.executeQuery()) {
 
             while (resultSet.next()) {
+                int topping_id = resultSet.getInt("topping_id");
                 String name = resultSet.getString("name");
                 int price = resultSet.getInt("price");
-                Topping newTopping = new Topping(name, price);
+                Topping newTopping = new Topping(topping_id,name, price);
                 toppingList.add(newTopping);
             }
         } catch (SQLException e) {
