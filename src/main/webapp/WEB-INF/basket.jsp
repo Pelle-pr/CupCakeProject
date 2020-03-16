@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: MariHaugen
@@ -13,8 +14,8 @@
 <body>
 
 <ol>
-    <c:forEach var="cupcake" items="${requestScope.basket}">
-        <li>${cupcake.bottom}, ${cupcake.topping}, ${cupcake.quantity}</li>
+    <c:forEach var="cupcake" items="${sessionScope.basket}">
+        <li>${cupcake.cupCake.bottom.name.toString()}, ${cupcake.cupCake.topping.name.toString()}, ${cupcake.cupCake.quantity}</li>
         <br>
 
     </c:forEach>

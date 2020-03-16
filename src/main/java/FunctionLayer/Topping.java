@@ -17,6 +17,10 @@ public class Topping {
         this.price = price;
     }
 
+    public Topping(String name) {
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }

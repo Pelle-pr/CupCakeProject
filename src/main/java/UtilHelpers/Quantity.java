@@ -9,6 +9,16 @@ import java.util.List;
 public class Quantity {
 
 
+    int quantity;
+
+    public Quantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public static ArrayList <Integer> getQuantity (){
 
         ArrayList arrayList = new ArrayList();

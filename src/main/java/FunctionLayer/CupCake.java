@@ -1,17 +1,26 @@
 package FunctionLayer;
 
 import DB.ToppingMapper;
+import UtilHelpers.Quantity;
 
 
 public class CupCake  {
 
     Bottom bottom;
     Topping topping;
-    int quantity;
+    Quantity quantity;
 
-    public CupCake(Bottom bottom,Topping topping, int quantity) {
+    public CupCake(Bottom bottom, Topping topping, Quantity quantity) {
         this.bottom = bottom;
         this.topping = topping;
+        this.quantity = quantity;
+    }
+
+    public Quantity getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Quantity quantity) {
         this.quantity = quantity;
     }
 
@@ -31,11 +40,5 @@ public class CupCake  {
         this.bottom = bottom;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 }
