@@ -19,8 +19,7 @@ public class NewCupCake extends Command {
 
        Bottom bottom = new Bottom(request.getParameter("bottom"));
        Topping topping = new Topping(request.getParameter("topping"));
-//       Quantity quantity = new Quantity(Integer.parseInt(request.getParameter("quantity")));
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
+       int quantity = Integer.parseInt(request.getParameter("quantity"));
        CupCake cupCake = new CupCake(bottom,topping,quantity);
 
         Basket basket = new Basket(cupCake);
@@ -36,6 +35,6 @@ public class NewCupCake extends Command {
 
 
 
-        return "basket" ;
+        return "customerpage" ;
     }
 }
