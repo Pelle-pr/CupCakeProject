@@ -1,5 +1,6 @@
 package DB;
 
+import FunctionLayer.LoginSampleException;
 import FunctionLayer.Topping;
 
 import java.sql.Connection;
@@ -10,22 +11,23 @@ import java.util.ArrayList;
 
 public class ToppingMapper {
 
-    public static ArrayList<Topping> getAllToppings() {
+    public static ArrayList<Topping> getAllToppings() throws LoginSampleException {
 
         ArrayList<Topping> toppingList = new ArrayList<>();
-
+        Connection con = Connector.connection();
         String sql = "SELECT name, price FROM cupcake.topping";
-        try (Connection con = Connector.connection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-            ResultSet resultSet = ps.executeQuery();
+        try (
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet resultSet = ps.executeQuery()) {
+
             while (resultSet.next()) {
                 String name = resultSet.getString("name");
                 int price = resultSet.getInt("price");
                 Topping newTopping = new Topping(name, price);
                 toppingList.add(newTopping);
             }
-        } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Fejl i connection til database");
+        } catch (SQLException e) {
+            System.out.println("Fejl i sqlforespørgsel");
             e.printStackTrace();
         }
         return toppingList;

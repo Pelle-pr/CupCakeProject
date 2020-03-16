@@ -2,6 +2,7 @@ package DB;
 
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
+import sun.rmi.runtime.Log;
 
 import java.sql.*;
 
@@ -13,10 +14,10 @@ import java.sql.*;
 public class UserMapper {
 
     public static void createUser( User user ) throws LoginSampleException {
-        try {
-            Connection con = Connector.connection();
-            String SQL = "INSERT INTO user (email, password, role, saldo) VALUES (?, ?, ?, ?)";
-            PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
+        Connection con = Connector.connection();
+        String SQL = "INSERT INTO user (email, password, role, saldo) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS))
+        {
             ps.setString( 1, user.getEmail() );
             ps.setString( 2, user.getPassword() );
             ps.setString( 3, user.getRole() );
@@ -26,7 +27,7 @@ public class UserMapper {
             ids.next();
             int id = ids.getInt( 1 );
             user.setId( id );
-        } catch ( SQLException | ClassNotFoundException ex ) {
+        } catch (SQLException ex) {
             throw new LoginSampleException( ex.getMessage() );
         }
     }
@@ -50,7 +51,7 @@ public class UserMapper {
             } else {
                 throw new LoginSampleException( "Could not validate user" );
             }
-        } catch ( ClassNotFoundException | SQLException ex ) {
+        } catch (SQLException ex ) {
             throw new LoginSampleException(ex.getMessage());
         }
     }

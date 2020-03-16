@@ -1,6 +1,7 @@
 package DB;
 
 import FunctionLayer.Bottom;
+import FunctionLayer.LoginSampleException;
 import FunctionLayer.Topping;
 
 import java.sql.Connection;
@@ -11,21 +12,22 @@ import java.util.ArrayList;
 
 public class BottomMapper {
 
-    public static ArrayList<Bottom> getAllBottoms() {
+    public static ArrayList<Bottom> getAllBottoms() throws LoginSampleException {
 
         ArrayList<Bottom> bottomList = new ArrayList<>();
 
         String sql = "SELECT name, price FROM cupcake.bottom";
-        try (Connection con = Connector.connection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-            ResultSet resultSet = ps.executeQuery();
+        Connection con = Connector.connection();
+        try  (  PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet resultSet = ps.executeQuery(); )
+        {
             while (resultSet.next()) {
                 String name = resultSet.getString("name");
                 int price = resultSet.getInt("price");
                 Bottom newBottom = new Bottom(name, price);
                 bottomList.add(newBottom);
             }
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             System.out.println("Fejl i connection til database");
             e.printStackTrace();
         }

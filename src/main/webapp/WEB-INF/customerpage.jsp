@@ -4,9 +4,6 @@
 <%@ page import="FunctionLayer.Topping" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%--<% request.setAttribute("quantitylist", Quantity.getQuantity());%>--%>
-<%--<% request.setAttribute("bottomlist", ToppingBottom.getBottoms()); %>--%>
-<%--<% request.setAttribute("toppinglist", ToppingBottom.getToppings()); %>--%>
 
 
 <!DOCTYPE html>

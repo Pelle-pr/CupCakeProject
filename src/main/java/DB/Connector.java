@@ -1,5 +1,8 @@
 package DB;
 
+import FunctionLayer.LoginSampleException;
+import sun.rmi.runtime.Log;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -14,10 +17,15 @@ public class Connector {
         singleton = con;
     }
 
-    public static Connection connection() throws ClassNotFoundException, SQLException {
+    public static Connection connection() throws LoginSampleException {
         if (singleton == null) {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            singleton = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                singleton = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            } catch (ClassNotFoundException | SQLException e){
+                e.printStackTrace();
+                throw new LoginSampleException("Problem med at skabe forbindelse til databasen");
+            }
         }
         return singleton;
     }
