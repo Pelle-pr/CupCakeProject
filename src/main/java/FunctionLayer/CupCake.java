@@ -8,19 +8,19 @@ public class CupCake  {
 
     Bottom bottom;
     Topping topping;
-    Quantity quantity;
+    int quantity;
 
-    public CupCake(Bottom bottom, Topping topping, Quantity quantity) {
+    public CupCake(Bottom bottom, Topping topping, int quantity) {
         this.bottom = bottom;
         this.topping = topping;
         this.quantity = quantity;
     }
 
-    public Quantity getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Quantity quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
