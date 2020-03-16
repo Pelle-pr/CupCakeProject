@@ -2,15 +2,16 @@ package FunctionLayer;
 
 import DB.ToppingMapper;
 
-public class CupCake {
 
-    Topping topping;
+public class CupCake  {
+
     Bottom bottom;
+    Topping topping;
     int quantity;
 
-    public CupCake(Topping topping, Bottom bottom, int quantity) {
-        this.topping = topping;
+    public CupCake(Bottom bottom,Topping topping, int quantity) {
         this.bottom = bottom;
+        this.topping = topping;
         this.quantity = quantity;
     }
 

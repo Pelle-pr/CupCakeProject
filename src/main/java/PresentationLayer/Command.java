@@ -1,6 +1,8 @@
 package PresentationLayer;
 
+import FunctionLayer.CupCake;
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.Topping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +16,7 @@ abstract class Command {
         commands = new HashMap<>();
         commands.put( "login", new Login() );
         commands.put( "register", new Register() );
+        commands.put("basket", new NewCupCake());
     }
 
     static Command from(HttpServletRequest request ) {

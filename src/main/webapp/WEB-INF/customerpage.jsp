@@ -18,7 +18,7 @@
 <h1>Hello ${sessionScope.email} </h1>
 
 <form action="FrontController" method="get">
-    <input type="hidden" name="target" value="søg">
+    <input type="hidden" name="target" value="basket">
     <div class="form-group">
 
 
@@ -48,7 +48,7 @@
         </select>
         <br>
 
-        <input type="submit" value="Søg"/>
+        <input type="submit" value="søg"/>
     </div>
 </form>
 
