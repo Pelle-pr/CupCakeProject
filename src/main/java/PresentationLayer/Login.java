@@ -30,10 +30,10 @@ public class Login extends Command {
         session.setAttribute("user_id",user.getId());
 
 
-        List<Bottom> bottomList = new ArrayList<>(DB.BottomMapper.getAllBottoms());
+        List<Bottom> bottomList = DB.BottomMapper.getAllBottoms();
         session.setAttribute("bottomlist", bottomList);
 
-        List<Topping> toppingList = new ArrayList<>(DB.ToppingMapper.getAllToppings());
+        List<Topping> toppingList = DB.ToppingMapper.getAllToppings();
         session.setAttribute("toppinglist", toppingList);
 
         session.setAttribute("quantitylist", Quantity.getQuantity());

@@ -15,7 +15,7 @@
     <li><a href="FrontController?target=checkOut">Check out</a></li>
 </ul>
 
-<%--<ol>--%>
+
 <div class="text-center">
     <table class="table table-striped">
         <tr><td>Bottom</td><td>Topping</td><td>Quantity</td><td>Sum</td></tr>
@@ -23,12 +23,15 @@
     <c:forEach var="cupcake" items="${sessionScope.basket}">
         <tr><td>${cupcake.cupCake.bottom.name}</td><td>${cupcake.cupCake.topping.name}</td><td>${cupcake.cupCake.quantity}</td><td>${cupcake.cupCake.sum}</td></tr>
 
-<%--        <li>${cupcake.cupCake.bottom.name}, ${cupcake.cupCake.topping.name}, ${cupcake.cupCake.quantity},${cupcake.cupCake.sum}</li>--%>
         <br>
 
+
     </c:forEach>
+
+
+
 </div>
-<%--</ol>--%>
+
 
 
 

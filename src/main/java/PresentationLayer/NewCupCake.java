@@ -16,14 +16,22 @@ public class NewCupCake extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
 
         HttpSession session = request.getSession();
+        int bottom_id = Integer.parseInt(request.getParameter("bottom"));
+        int topping_id = Integer.parseInt(request.getParameter("topping"));
 
-        Bottom bottom = new Bottom(request.getParameter("bottom"));
-        Topping topping = new Topping(request.getParameter("topping"));
+        ArrayList<Bottom> bottomArrayList = (ArrayList<Bottom>) session.getAttribute("bottomlist");
+        ArrayList<Topping> toppingArrayList = (ArrayList<Topping>) session.getAttribute("toppinglist");
+
+        Bottom bottom = findBottom(bottom_id, bottomArrayList);
+        Topping topping = findTopping(topping_id, toppingArrayList);
+
+
         int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-       CupCake cupCake = new CupCake(bottom,topping,quantity);
+        CupCake cupCake = new CupCake(bottom,topping,quantity);
 
         Basket basket = new Basket(cupCake);
+
 
 
         if(session.getAttribute("basket")== null){
@@ -37,5 +45,28 @@ public class NewCupCake extends Command {
 
 
         return "customerpage" ;
+    }
+
+    private Bottom findBottom(int bottom_id, ArrayList<Bottom> bottomArrayList) {
+
+
+        for (Bottom bottom : bottomArrayList) {
+            if (bottom.getId() == bottom_id) {
+                return bottom;
+            }
+
+        }
+        return null;
+    }
+    private Topping findTopping(int bottom_id, ArrayList<Topping> toppingArrayList) {
+
+
+        for (Topping topping : toppingArrayList) {
+            if (topping.getId() == bottom_id) {
+                return topping;
+            }
+
+        }
+        return null;
     }
 }

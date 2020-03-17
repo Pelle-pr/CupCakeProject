@@ -21,7 +21,7 @@
         <label for="bottom">Bund</label>
         <select class="form-control" id="bottom" name="bottom">
             <c:forEach var="bottom" items="${sessionScope.bottomlist}">
-                <option>${bottom.name}</option>
+                <option value="${bottom.id}">${bottom.name}</option>
             </c:forEach>
         </select>
 
@@ -30,7 +30,7 @@
         <label for="topping">Top</label>
         <select class="form-control" id="topping" name="topping">
             <c:forEach var="topping" items="${sessionScope.toppinglist}">
-                <option>${topping.name}</option>
+                <option value="${topping.id}">${topping.name}</option>
             </c:forEach>
         </select>
         <br>
