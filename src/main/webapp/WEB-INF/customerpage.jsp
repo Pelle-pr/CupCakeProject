@@ -1,14 +1,12 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@include file="../includes/header.inc"%>
 
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>${sessionScope.user_id}</title>
-</head>
-<body>
+<ul>
+    <li><a href="FrontController?target=index">Home</a></li>
+    <li><a href="FrontController?target=redirect&destination=basket">Basket</a></li>
+    <li><a href="FrontController?target=checkOut">Check out</a></li>
+</ul>
 
 
 <h1>Hello ${sessionScope.email} </h1>
@@ -46,12 +44,15 @@
         </select>
         <br>
 
-        <input type="submit" value="søg"/>
+        <input type="submit" value="Add to basket"/>
     </div>
 </form>
-<a href="FrontController?target=redirect&destination=basket" ><h5>Kurv</h5></a>
+<%--<a href="FrontController?target=redirect&destination=basket" ><h5>Kurv</h5></a>--%>
 
 
 You are now logged in as a customer of our wonderful site.
-</body>
-</html>
+
+
+
+
+<%@include file="../includes/footer.inc"%>
