@@ -6,11 +6,12 @@
     <li><a href="FrontController?target=index">Home</a></li>
     <li><a href="FrontController?target=redirect&destination=basket">Basket</a></li>
     <li><a href="FrontController?target=checkOut">Check out</a></li>
+
 </ul>
 
 
 <h1>Hello ${sessionScope.email} </h1>
-
+<h2>${sessionScope.saldo}</h2>
 
 
 <form action="FrontController" method="get">

@@ -3,11 +3,10 @@ package FunctionLayer;
 public class Basket {
 
     CupCake cupCake;
-    int totalSum = 0;
+    int totalSum;
 
     public Basket(CupCake cupCake) {
         this.cupCake = cupCake;
-        this.totalSum = cupCake.getSum() + totalSum;
     }
 
     public int getTotalSum() {

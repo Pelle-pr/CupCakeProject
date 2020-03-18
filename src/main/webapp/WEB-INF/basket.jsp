@@ -29,7 +29,12 @@
     </c:forEach>
 
 
-
+        <form name="newOrder" action="FrontController" method="post">
+            <input type="hidden" name="target" value="newOrder">
+            <input type="submit" value="Køb">
+        </form>
+        <br>
+    ${sessionScope.totalSum}
 </div>
 
 

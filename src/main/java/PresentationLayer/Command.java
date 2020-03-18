@@ -6,6 +6,7 @@ import FunctionLayer.Topping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
 import java.util.HashMap;
 
 abstract class Command {
@@ -18,6 +19,7 @@ abstract class Command {
         commands.put( "register", new Register() );
         commands.put("basket", new NewCupCake());
         commands.put("redirect", new Redirect());
+        commands.put("newOrder", new NewOrder());
     }
 
     static Command from(HttpServletRequest request ) {
@@ -28,7 +30,7 @@ abstract class Command {
         return commands.getOrDefault(TargetName, new UnknownCommand() );   // unknowncommand er default.
     }
 
-    abstract String execute( HttpServletRequest request, HttpServletResponse response ) 
-            throws LoginSampleException;
+    abstract String execute( HttpServletRequest request, HttpServletResponse response )
+            throws LoginSampleException, SQLException;
 
 }

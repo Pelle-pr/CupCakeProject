@@ -1,14 +1,12 @@
 package PresentationLayer;
 
 import FunctionLayer.*;
-import UtilHelpers.Quantity;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class NewCupCake extends Command {
@@ -39,10 +37,14 @@ public class NewCupCake extends Command {
             Set<Basket> basketSet = new HashSet<>();
 
             session.setAttribute("basket",basketSet);
+
         }
         ((Set<Basket>) session.getAttribute("basket")).add(basket);
 
 
+
+        int totalSum = getTotalBasketSum((Set<Basket>) session.getAttribute("basket"));
+        session.setAttribute("totalSum", totalSum);
 
         return "customerpage" ;
     }
@@ -69,4 +71,15 @@ public class NewCupCake extends Command {
         }
         return null;
     }
+    private int getTotalBasketSum (Set<Basket> basketSet){
+
+        int res = 0;
+        for (Basket basket : basketSet) {
+            res = res + basket.getCupCake().getSum();
+
+        }
+        return res;
+    }
+
+
 }
