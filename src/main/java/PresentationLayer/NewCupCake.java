@@ -39,9 +39,8 @@ public class NewCupCake extends Command {
             session.setAttribute("basket",basketSet);
 
         }
-        ((Set<Basket>) session.getAttribute("basket")).add(basket);
-
-
+        else
+            ((Set<Basket>) session.getAttribute("basket")).add(basket);
 
         int totalSum = getTotalBasketSum((Set<Basket>) session.getAttribute("basket"));
         session.setAttribute("totalSum", totalSum);

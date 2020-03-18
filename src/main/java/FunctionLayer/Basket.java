@@ -7,6 +7,7 @@ public class Basket {
 
     public Basket(CupCake cupCake) {
         this.cupCake = cupCake;
+        this.totalSum += cupCake.getSum();
     }
 
     public int getTotalSum() {

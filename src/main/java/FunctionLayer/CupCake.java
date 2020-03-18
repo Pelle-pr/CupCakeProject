@@ -23,7 +23,7 @@ public class CupCake  {
         this.bottom = bottom;
         this.topping = topping;
         this.quantity = quantity;
-        this.sum = bottom.getPrice() + topping.getPrice() * quantity;
+        this.sum = (bottom.getPrice() + topping.getPrice()) * quantity;
     }
 
     public int getQuantity() {

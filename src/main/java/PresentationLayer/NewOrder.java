@@ -1,5 +1,6 @@
 package PresentationLayer;
 
+import DB.UserMapper;
 import FunctionLayer.Basket;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
@@ -18,12 +19,19 @@ public class NewOrder extends Command {
 
         HttpSession session = request.getSession();
 
+        int totalSum = (int) session.getAttribute("totalSum");
+        int saldo = (int) session.getAttribute("saldo");
         int user_id = (int) session.getAttribute("user_id");
+
         Set<Basket> basketSet = (Set<Basket>) session.getAttribute("basket");
+//
+           if (saldo >= totalSum) {
+            DB.OrderMapper.transaction(user_id, basketSet);
+            UserMapper.opdaterMedlem(user_id,saldo-totalSum);
+            basketSet.removeAll(basketSet);
 
-        DB.OrderMapper.transaction(user_id,basketSet);
-
-        
+          }
+//        System.out.println("Du har ikke penge nok på din konto");
 
         return "customerpage" ;
     }
