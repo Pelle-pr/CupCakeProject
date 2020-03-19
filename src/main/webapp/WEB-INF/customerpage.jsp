@@ -12,7 +12,12 @@
 
 <h1>Hello ${sessionScope.email} </h1>
 <h2>${sessionScope.saldo}</h2>
+<c:if test = "${requestScope.error!= null}" >
 
+    <h2>Error ! </h2>
+    ${requestScope.error}
+
+</c:if>
 
 <form action="FrontController" method="get">
     <input type="hidden" name="target" value="basket">

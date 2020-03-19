@@ -55,7 +55,7 @@ public class UserMapper {
             throw new LoginSampleException(ex.getMessage());
         }
     }
-    public static void opdaterSaldo(int user_id, int totalSum) throws LoginSampleException {
+    public static void opdaterSaldo(int user_id, int newSaldo) throws LoginSampleException {
         int result = 0;
         int newId = 0;
         String sql = "update cupcake.user set saldo = ? where user_id = ?";
@@ -63,7 +63,7 @@ public class UserMapper {
         Connection con = Connector.connection();
         PreparedStatement ps = con.prepareStatement(sql);
 
-            ps.setInt(1,totalSum);
+            ps.setInt(1,newSaldo);
             ps.setInt(2,user_id);
             result = ps.executeUpdate();
         }
