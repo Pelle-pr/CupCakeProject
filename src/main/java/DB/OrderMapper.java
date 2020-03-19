@@ -45,7 +45,8 @@ public class OrderMapper {
         String sqlOrder = "INSERT INTO cupcake.order (user_id, date) VALUES (?, ?)";
         String sqlOrderLine = "INSERT INTO cupcake.orderline (order_id, quantity, sum, bottom_id, topping_id) VALUES (?, ?, ?, ?, ?)";
 
-        try (Connection con = Connector.connection()) {
+        try  {
+            Connection con = Connector.connection();
             con.setAutoCommit(false);
             try (PreparedStatement ps = con.prepareStatement(sqlOrder, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setInt(1, userId);
@@ -67,12 +68,20 @@ public class OrderMapper {
                         ps1.setInt(5, basket.getCupCake().getTopping().getId());
                         ps1.executeUpdate();
                     }
+                    catch (Exception e){
+                        con.rollback();
+                    }
                 }
                 con.commit();
+                con.setAutoCommit(true);
                 return order_id;
             }
 
 
+        } catch (Exception e){
+
+
         }
+        return 0;
     }
 }
