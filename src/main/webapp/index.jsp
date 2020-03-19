@@ -6,13 +6,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="includes/header.inc"%>
-
-<ul>
-    <li><a class="active" href="FrontController?target=index">Home</a></li>
-    <li><a href="FrontController?target=basket">Basket</a></li>
-    <li><a href="FrontController?target=checkOut">Check out</a></li>
-</ul>
-
         
         <table>
             <tr><td>Login</td>

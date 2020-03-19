@@ -3,15 +3,17 @@
 <%@include file="../includes/header.inc"%>
 
 <ul>
-    <li><a href="FrontController?target=index">Home</a></li>
+    <li><a class="active" href="FrontController?target=redirect&destination=customerpage">Cupcakes</a></li>
     <li><a href="FrontController?target=redirect&destination=basket">Basket</a></li>
-    <li><a href="FrontController?target=checkOut">Check out</a></li>
+    <li><a href="FrontController?target=redirect&destination=myorders">My Orders</a></li>
+    <li>     Hello ${sessionScope.email}</li>
+    <li> Din saldo er: ${sessionScope.saldo}</li>
 
 </ul>
 
 
-<h1>Hello ${sessionScope.email} </h1>
-<h2>${sessionScope.saldo}</h2>
+<%--<h1>Hello ${sessionScope.email} </h1>--%>
+<%--<h2>${sessionScope.saldo}</h2>--%>
 <c:if test = "${requestScope.error!= null}" >
 
     <h2>Error ! </h2>
