@@ -55,20 +55,23 @@ public class UserMapper {
             throw new LoginSampleException(ex.getMessage());
         }
     }
-    public static void opdaterMedlem(int user_id, int totalSum) throws LoginSampleException {
+    public static void opdaterSaldo(int user_id, int totalSum) throws LoginSampleException {
         int result = 0;
         int newId = 0;
         String sql = "update cupcake.user set saldo = ? where user_id = ?";
-
+        try{
         Connection con = Connector.connection();
-        try (PreparedStatement ps = con.prepareStatement(sql)) {
+        PreparedStatement ps = con.prepareStatement(sql);
+
             ps.setInt(1,totalSum);
             ps.setInt(2,user_id);
             result = ps.executeUpdate();
         }
+
         catch (SQLException e) {
             System.out.println("Fejl i connection til database");
             e.printStackTrace();
+
         }
         if (result == 1){
             System.out.println("Saldo opdateret");

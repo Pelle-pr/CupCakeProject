@@ -20,11 +20,17 @@ public class Login extends Command {
     @Override
     String execute( HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
 
+        HttpSession session = request.getSession();
+
+
+        request.getServletContext().setAttribute("bottomlist",DB.BottomMapper.getAllBottoms());
+        request.getServletContext().setAttribute("toppinglist", DB.ToppingMapper.getAllToppings());
+        request.getServletContext().setAttribute("quantity", Quantity.getQuantity());
+
         String email = request.getParameter( "email" );
         String password = request.getParameter( "password" );
         User user = LogicFacade.login ( email, password );
 
-        HttpSession session = request.getSession();
 
         session.setAttribute( "user", user );
         session.setAttribute( "role", user.getRole() );
@@ -32,14 +38,14 @@ public class Login extends Command {
         session.setAttribute("user_id",user.getId());
         session.setAttribute("saldo",user.getSaldo());
 
+//
+//        List<Bottom> bottomList = DB.BottomMapper.getAllBottoms();
+//        session.setAttribute("bottomlist", bottomList);
 
-        List<Bottom> bottomList = DB.BottomMapper.getAllBottoms();
-        session.setAttribute("bottomlist", bottomList);
+//        List<Topping> toppingList = DB.ToppingMapper.getAllToppings();
+//        session.setAttribute("toppinglist", toppingList);
 
-        List<Topping> toppingList = DB.ToppingMapper.getAllToppings();
-        session.setAttribute("toppinglist", toppingList);
-
-        session.setAttribute("quantitylist", Quantity.getQuantity());
+//        session.setAttribute("quantitylist", Quantity.getQuantity());
 
         return user.getRole() + "page";
     }

@@ -21,7 +21,7 @@
 
         <label for="bottom">Bund</label>
         <select class="form-control" id="bottom" name="bottom">
-            <c:forEach var="bottom" items="${sessionScope.bottomlist}">
+            <c:forEach var="bottom" items="${applicationScope.bottomlist}">
                 <option value="${bottom.id}">${bottom.name}</option>
             </c:forEach>
         </select>
@@ -30,14 +30,14 @@
 
         <label for="topping">Top</label>
         <select class="form-control" id="topping" name="topping">
-            <c:forEach var="topping" items="${sessionScope.toppinglist}">
+            <c:forEach var="topping" items="${applicationScope.toppinglist}">
                 <option value="${topping.id}">${topping.name}</option>
             </c:forEach>
         </select>
         <br>
         <label for="quantity">Antal</label>
         <select class="form-control" id="quantity" name="quantity">
-            <c:forEach var="quantity" items="${sessionScope.quantitylist}">
+            <c:forEach var="quantity" items="${applicationScope.quantity}">
                 <option>${quantity}</option>
             </c:forEach>
 

@@ -20,6 +20,7 @@
     <table class="table table-striped">
         <tr><td>Bottom</td><td>Topping</td><td>Quantity</td><td>Sum</td></tr>
 
+
     <c:forEach var="cupcake" items="${sessionScope.basket}">
         <tr><td>${cupcake.cupCake.bottom.name}</td><td>${cupcake.cupCake.topping.name}</td><td>${cupcake.cupCake.quantity}</td><td>${cupcake.cupCake.sum}</td></tr>
 

@@ -24,10 +24,10 @@ public class NewOrder extends Command {
         int user_id = (int) session.getAttribute("user_id");
 
         Set<Basket> basketSet = (Set<Basket>) session.getAttribute("basket");
-//
+
            if (saldo >= totalSum) {
             DB.OrderMapper.transaction(user_id, basketSet);
-            UserMapper.opdaterMedlem(user_id,saldo-totalSum);
+            UserMapper.opdaterSaldo(user_id,saldo-totalSum);
             basketSet.removeAll(basketSet);
 
           }

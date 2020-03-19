@@ -16,15 +16,15 @@ public class NewCupCake extends Command {
         HttpSession session = request.getSession();
         int bottom_id = Integer.parseInt(request.getParameter("bottom"));
         int topping_id = Integer.parseInt(request.getParameter("topping"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-        ArrayList<Bottom> bottomArrayList = (ArrayList<Bottom>) session.getAttribute("bottomlist");
-        ArrayList<Topping> toppingArrayList = (ArrayList<Topping>) session.getAttribute("toppinglist");
+        ArrayList<Bottom> bottomArrayList = (ArrayList<Bottom>) session.getServletContext().getAttribute("bottomlist");
+        ArrayList<Topping> toppingArrayList = (ArrayList<Topping>) session.getServletContext().getAttribute("toppinglist");
 
         Bottom bottom = findBottom(bottom_id, bottomArrayList);
         Topping topping = findTopping(topping_id, toppingArrayList);
 
 
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
 
         CupCake cupCake = new CupCake(bottom,topping,quantity);
 
@@ -38,9 +38,7 @@ public class NewCupCake extends Command {
 
             session.setAttribute("basket",basketSet);
 
-        }
-        else
-            ((Set<Basket>) session.getAttribute("basket")).add(basket);
+        } ((Set<Basket>) session.getAttribute("basket")).add(basket);
 
         int totalSum = getTotalBasketSum((Set<Basket>) session.getAttribute("basket"));
         session.setAttribute("totalSum", totalSum);
