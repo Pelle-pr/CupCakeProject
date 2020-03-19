@@ -29,9 +29,11 @@ public class NewOrder extends Command {
 
 
             if (saldo >= totalSum) {
+                int newSaldo = saldo - totalSum;
                 DB.OrderMapper.transaction(user_id, basketSet);
-                UserMapper.opdaterSaldo(user_id, saldo - totalSum);
+                UserMapper.opdaterSaldo(user_id, newSaldo);
                 basketSet.removeAll(basketSet);
+                session.setAttribute("saldo", newSaldo );
 
             }
           else
