@@ -39,10 +39,6 @@ public class NewOrder extends Command {
           else
             request.setAttribute( "error", "Du har ikke penge nok på din konto - kontakt Admin!");
 
-
-
-
-
-        return "customerpage" ;
+          return "customerpage" ;
     }
 }

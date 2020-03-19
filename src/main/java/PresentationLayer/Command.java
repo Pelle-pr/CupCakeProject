@@ -22,6 +22,7 @@ abstract class Command {
         commands.put("basket", new NewCupCake());
         commands.put("redirect", new Redirect());
         commands.put("newOrder", new NewOrder());
+        commands.put("myorders", new MyOrder());
     }
 
     static Command from(HttpServletRequest request ) {

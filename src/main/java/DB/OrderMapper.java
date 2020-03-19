@@ -1,12 +1,17 @@
 package DB;
 
 import FunctionLayer.Basket;
+import FunctionLayer.Bottom;
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.MyOrderList;
+import PresentationLayer.MyOrder;
 
 
 import java.sql.*;
 import java.time.LocalDate;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 
@@ -84,4 +89,40 @@ public class OrderMapper {
         }
         return 0;
     }
+
+    public static List<MyOrderList> myOrdersByID (int user_id) throws LoginSampleException, SQLException {
+
+        List<MyOrderList> orderlist = new ArrayList<>();
+        String sqlOrders = "SELECT o.order_id, o.date, ol.quantity, ol.sum, b.name, t.name\n" +
+                "from cupcake.order o\n" +
+                "inner join cupcake.orderline ol on o.order_id = ol.order_id\n" +
+                "inner join cupcake.bottom b on ol.bottom_id = b.bottom_id\n" +
+                "inner join cupcake.topping t on ol.topping_id = t.topping_id\n" +
+                "where user_id = "+ user_id + " order by order_id desc";
+        Connection con = Connector.connection();
+        try  (  PreparedStatement ps = con.prepareStatement(sqlOrders);
+                ResultSet resultSet = ps.executeQuery() )
+        {
+            while (resultSet.next()) {
+                int order_id = resultSet.getInt("order_id");
+                String date = resultSet.getString("date");
+                int quantity = resultSet.getInt("quantity");
+                int sum = resultSet.getInt("sum");
+                String bottom_name = resultSet.getString("name");
+                String topping_name = resultSet.getString("name");
+
+
+                MyOrderList myOrderList  = new MyOrderList(order_id,date,quantity,sum,bottom_name,topping_name);
+                orderlist.add(myOrderList);
+            }
+        } catch (SQLException e) {
+            System.out.println("Fejl i connection til database");
+            e.printStackTrace();
+        }
+        return orderlist;
+    }
+
+
+
 }
+

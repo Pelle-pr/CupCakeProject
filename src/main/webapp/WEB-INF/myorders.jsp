@@ -11,24 +11,12 @@
 
 <div class="text-center">
     <table class="table table-striped">
-        <tr><td>Order number</td><td>Bottom</td><td>Topping</td><td>Quantity</td><td>Sum</td></tr>
-
-
-        <c:forEach var="cupcake" items="${sessionScope.basket}">
-        <tr><td>${cupcake.cupCake.bottom.name}</td><td>${cupcake.cupCake.topping.name}</td><td>${cupcake.cupCake.quantity}</td><td>${cupcake.cupCake.sum}</td></tr>
-
+        <tr><td>Order number</td><td>Date</td><td>Quantity</td><td>Bottom</td><td>Topping</td><td>Sum</td></tr>
+        <c:forEach var="orders" items="${sessionScope.myorderlist}">
+        <tr><td>${orders.order_id}</td><td>${orders.date}</td><td>${orders.quantity}</td><td>${orders.bottom_name}</td><td>${orders.topping_name}</td><td>${orders.sum}</td></tr>
         <br>
-
-
         </c:forEach>
-
-
-        <form name="newOrder" action="FrontController" method="post">
-            <input type="hidden" name="target" value="newOrder">
-            <input type="submit" value="Køb">
-        </form>
-        <br>
-        ${sessionScope.totalSum}
+    </table>
 </div>
 
 

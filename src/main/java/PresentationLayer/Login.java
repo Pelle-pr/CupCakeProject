@@ -22,10 +22,15 @@ public class Login extends Command {
 
         HttpSession session = request.getSession();
 
-
-        request.getServletContext().setAttribute("bottomlist",DB.BottomMapper.getAllBottoms());
-        request.getServletContext().setAttribute("toppinglist", DB.ToppingMapper.getAllToppings());
-        request.getServletContext().setAttribute("quantity", Quantity.getQuantity());
+        if (request.getServletContext().getAttribute("bottomlist") == null) {
+            request.getServletContext().setAttribute("bottomlist", DB.BottomMapper.getAllBottoms());
+        }
+        if (request.getServletContext().getAttribute("toppinglist") == null) {
+            request.getServletContext().setAttribute("toppinglist", DB.ToppingMapper.getAllToppings());
+        }
+        if (request.getServletContext().getAttribute("quantity") == null) {
+            request.getServletContext().setAttribute("quantity", Quantity.getQuantity());
+        }
 
         String email = request.getParameter( "email" );
         String password = request.getParameter( "password" );
@@ -38,14 +43,7 @@ public class Login extends Command {
         session.setAttribute("user_id",user.getId());
         session.setAttribute("saldo",user.getSaldo());
 
-//
-//        List<Bottom> bottomList = DB.BottomMapper.getAllBottoms();
-//        session.setAttribute("bottomlist", bottomList);
 
-//        List<Topping> toppingList = DB.ToppingMapper.getAllToppings();
-//        session.setAttribute("toppinglist", toppingList);
-
-//        session.setAttribute("quantitylist", Quantity.getQuantity());
 
         return user.getRole() + "page";
     }
