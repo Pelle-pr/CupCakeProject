@@ -1,6 +1,11 @@
 package FunctionLayer;
 
+import DB.BottomMapper;
+import DB.OrderMapper;
+import DB.ToppingMapper;
 import DB.UserMapper;
+
+import java.util.ArrayList;
 
 /**
  * The purpose of LogicFacade is to...
@@ -17,5 +22,15 @@ public class LogicFacade {
         UserMapper.createUser( user );
         return user;
     }
+    public static ArrayList<Bottom> getAllBottoms() throws LoginSampleException {
+        return BottomMapper.getAllBottoms();
+    }
+
+    public static ArrayList<Topping> getAllToppings() throws LoginSampleException {
+        return ToppingMapper.getAllToppings();
+    }
+
+
+
 
 }

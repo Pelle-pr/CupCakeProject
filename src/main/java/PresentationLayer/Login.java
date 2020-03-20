@@ -23,10 +23,10 @@ public class Login extends Command {
         HttpSession session = request.getSession();
 
         if (request.getServletContext().getAttribute("bottomlist") == null) {
-            request.getServletContext().setAttribute("bottomlist", DB.BottomMapper.getAllBottoms());
+            request.getServletContext().setAttribute("bottomlist", LogicFacade.getAllBottoms());
         }
         if (request.getServletContext().getAttribute("toppinglist") == null) {
-            request.getServletContext().setAttribute("toppinglist", DB.ToppingMapper.getAllToppings());
+            request.getServletContext().setAttribute("toppinglist", LogicFacade.getAllToppings());
         }
         if (request.getServletContext().getAttribute("quantity") == null) {
             request.getServletContext().setAttribute("quantity", Quantity.getQuantity());

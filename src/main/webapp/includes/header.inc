@@ -45,5 +45,16 @@
                 background-color: palegoldenrod;
             ;
             }
+            .not-active {
+                pointer-events: none;
+                cursor: default;
+                text-decoration: none;
+            }
+            #email {
+                float: right;
+            }
+            #saldo {
+                float: right;
+            }
         </style>
 
