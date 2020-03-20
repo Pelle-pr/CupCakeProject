@@ -3,13 +3,26 @@ package FunctionLayer;
 import DB.ToppingMapper;
 import UtilHelpers.Quantity;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 
 public class CupCake  {
 
+
+    int orderline_id;
     Bottom bottom;
     Topping topping;
     int quantity;
     int sum;
+
+    public int getOrderline_id() {
+        return orderline_id;
+    }
+
+    public void setOrderline_id(int orderline_id) {
+        this.orderline_id = orderline_id;
+    }
+
 
     public int getSum() {
         return sum;
@@ -20,6 +33,7 @@ public class CupCake  {
     }
 
     public CupCake(Bottom bottom, Topping topping, int quantity) {
+        this.orderline_id = orderline_id;
         this.bottom = bottom;
         this.topping = topping;
         this.quantity = quantity;
