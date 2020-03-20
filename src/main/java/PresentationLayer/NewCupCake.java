@@ -28,20 +28,16 @@ public class NewCupCake extends Command {
 
         CupCake cupCake = new CupCake(bottom,topping,quantity);
 
-        Basket basket = new Basket(cupCake);
+        Basket basket = (Basket) session.getAttribute("basket");
 
-
-
-        if(session.getAttribute("basket")== null){
-
-            Set<Basket> basketSet = new HashSet<>();
-
-            session.setAttribute("basket",basketSet);
-
+        if(basket == null){
+             basket = new Basket(cupCake);
+        } else {
+            basket.addCupcake(cupCake);
         }
-        ((Set<Basket>) session.getAttribute("basket")).add(basket);
+        session.setAttribute("basket",basket);
 
-        int totalSum = getTotalBasketSum((Set<Basket>) session.getAttribute("basket"));
+        int totalSum = basket.getTotalSum();
         session.setAttribute("totalSum", totalSum);
 
         return "customerpage" ;

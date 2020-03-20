@@ -1,9 +1,6 @@
 package DB;
 
-import FunctionLayer.Basket;
-import FunctionLayer.Bottom;
-import FunctionLayer.LoginSampleException;
-import FunctionLayer.MyOrderList;
+import FunctionLayer.*;
 import PresentationLayer.MyOrder;
 
 
@@ -43,7 +40,7 @@ public class OrderMapper {
         return orderId;
     }
 
-    public static int transaction(int userId, Set<Basket> basketSet) throws SQLException, LoginSampleException {
+    public static int transaction(int userId, Basket basket) throws SQLException, LoginSampleException {
 
         LocalDate date = LocalDate.now();
         int order_id = 0;
@@ -64,13 +61,13 @@ public class OrderMapper {
                     order_id = idResultSet.getInt(1);
                 }
 
-                for (Basket basket : basketSet) {
+                for (CupCake cake: basket.getCupCakeList()) {
                     try (PreparedStatement ps1 = con.prepareStatement(sqlOrderLine, Statement.RETURN_GENERATED_KEYS)) {
                         ps1.setInt(1, order_id);
-                        ps1.setInt(2, basket.getCupCake().getQuantity());
-                        ps1.setInt(3, basket.getCupCake().getSum());
-                        ps1.setInt(4, basket.getCupCake().getBottom().getId());
-                        ps1.setInt(5, basket.getCupCake().getTopping().getId());
+                        ps1.setInt(2, cake.getQuantity());
+                        ps1.setInt(3,cake.getSum());
+                        ps1.setInt(4,cake.getBottom().getId());
+                        ps1.setInt(5,cake.getTopping().getId());
                         ps1.executeUpdate();
                     }
                     catch (Exception e){

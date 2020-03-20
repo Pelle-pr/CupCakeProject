@@ -21,28 +21,12 @@ public class DeleteOrderLine extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, SQLException, ServletException, IOException {
 
         HttpSession session = request.getSession();
-        int orderLine_id = (int) session.getAttribute("remove");
-
-        Set<Basket> basketSet = (Set<Basket>) session.getAttribute("basket");
-
-        basketSet.remove( findOrderline(orderLine_id, basketSet));
-
-        session.setAttribute("basket",basketSet );
-
-        return "basket.jsp";
+        int orderLine_id = Integer.parseInt(request.getParameter("remove")) ;
+        Basket basket = (Basket) session.getAttribute("basket");
+        basket.removeCupcake(orderLine_id);
+        session.setAttribute("basket",basket );
+        session.setAttribute("totalSum", basket.getTotalSum());
+        return "basket";
     }
 
-    private CupCake findOrderline(int orderLine_id, Set<Basket> basketSet) {
-
-        for (Basket basket : basketSet) {
-            if (basket.getCupCake().getOrderline_id() == orderLine_id) {
-                return basket.getCupCake();
-            }
-
-        }
-
-        return null;
-
-
-    }
 }

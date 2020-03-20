@@ -19,20 +19,20 @@ public class NewOrder extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, SQLException, ServletException, IOException {
 
-        HttpSession session = request.getSession();
 
+        HttpSession session = request.getSession();
         int totalSum = (int) session.getAttribute("totalSum");
         int saldo = (int) session.getAttribute("saldo");
         int user_id = (int) session.getAttribute("user_id");
-        Set<Basket> basketSet = (Set<Basket>) session.getAttribute("basket");
+        Basket basket = (Basket) session.getAttribute("basket");
 
 
 
             if (saldo >= totalSum) {
                 int newSaldo = saldo - totalSum;
-                DB.OrderMapper.transaction(user_id, basketSet);
+                DB.OrderMapper.transaction(user_id, basket);
                 UserMapper.opdaterSaldo(user_id, newSaldo);
-                basketSet.removeAll(basketSet);
+                basket.getCupCakeList().clear();
                 session.setAttribute("saldo", newSaldo );
 
             }

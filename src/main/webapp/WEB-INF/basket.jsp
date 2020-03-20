@@ -21,22 +21,23 @@
                 <td>Sum</td>
                 <td></td>
             </tr>
-            <c:forEach var="cupcake" items="${sessionScope.basket}">
+            <c:forEach var="cupcake" items="${sessionScope.basket.cupCakeList}">
             <tr>
-                <td>${cupcake.cupCake.bottom.name}</td>
-                <td>${cupcake.cupCake.topping.name}</td>
-                <td>${cupcake.cupCake.quantity}</td>
-                <td>${cupcake.cupCake.sum}</td>
+                <td>${cupcake.bottom.name}</td>
+                <td>${cupcake.topping.name}</td>
+                <td>${cupcake.quantity}</td>
+                <td>${cupcake.sum}</td>
                 <td>
-                    <button type="submit" class="button" name="remove" value="${cupcake.cupCake.orderline_id}">Remove
+                    <button type="submit" class="button" name="remove" value="${cupcake.orderline_id}">Remove
                     </button>
                 </td>
 
             </tr>
+            </c:forEach>
             </table>
+
     </form>
 
-            </c:forEach>
             <tr>
                 <td></td>
                 <td></td>
