@@ -20,6 +20,7 @@
             <td>Sum</td>
             <td>Bottom</td>
             <td>Topping</td>
+            <td>Status</td>
             <td></td>
         </tr>
         <c:forEach var="adminorder" items="${sessionScope.allOrdersList}">
@@ -31,10 +32,14 @@
                 <td>${adminorder.sum}</td>
                 <td>${adminorder.bottom_name}</td>
                 <td>${adminorder.topping_name}</td>
+                <td>${adminorder.status}</td>
 
                 <td>
-                    <button type="submit" class="button" name="remove" value="${user.id}">Remove
-                    </button>
+                    <form name="update" action="FrontController" method="POST">
+                        <input type="hidden" name="target" value="updateorder">
+                        <button type="submit" class="button" name="complete" value="${adminorder.order_id}">Complete
+                        </button>
+                    </form>
                 </td>
             </tr>
         </c:forEach>

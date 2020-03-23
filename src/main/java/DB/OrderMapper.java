@@ -44,7 +44,7 @@ public class OrderMapper {
 
         LocalDate date = LocalDate.now();
         int order_id = 0;
-        String sqlOrder = "INSERT INTO cupcake.order (user_id, date) VALUES (?, ?)";
+        String sqlOrder = "INSERT INTO cupcake.order (user_id, date, status) VALUES (?, ?, ?)";
         String sqlOrderLine = "INSERT INTO cupcake.orderline (order_id, quantity, sum, bottom_id, topping_id) VALUES (?, ?, ?, ?, ?)";
 
         try  {
@@ -53,6 +53,7 @@ public class OrderMapper {
             try (PreparedStatement ps = con.prepareStatement(sqlOrder, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setInt(1, userId);
                 ps.setDate(2, Date.valueOf(date));
+                ps.setString(3, "Bestilt");
                 ps.executeUpdate();
 
                 ResultSet idResultSet = ps.getGeneratedKeys();
@@ -90,7 +91,7 @@ public class OrderMapper {
     public static List<MyOrderList> myOrdersByID (int user_id) throws LoginSampleException, SQLException {
 
         List<MyOrderList> orderlist = new ArrayList<>();
-        String sqlOrders = "SELECT o.order_id, o.date, ol.quantity, ol.sum, b.name, t.name\n" +
+        String sqlOrders = "SELECT o.status, o.order_id, o.date, ol.quantity, ol.sum, b.name, t.name\n" +
                 "from cupcake.order o\n" +
                 "inner join cupcake.orderline ol on o.order_id = ol.order_id\n" +
                 "inner join cupcake.bottom b on ol.bottom_id = b.bottom_id\n" +
@@ -107,9 +108,10 @@ public class OrderMapper {
                 int sum = resultSet.getInt("sum");
                 String bottom_name = resultSet.getString("name");
                 String topping_name = resultSet.getString("name");
+                String status = resultSet.getString("status");
 
 
-                MyOrderList myOrderList  = new MyOrderList(order_id,date,quantity,sum,bottom_name,topping_name);
+                MyOrderList myOrderList  = new MyOrderList(order_id,date,quantity,sum,bottom_name,topping_name,status);
                 orderlist.add(myOrderList);
             }
         } catch (SQLException e) {
@@ -122,7 +124,7 @@ public class OrderMapper {
     public static List<MyOrderList> getAllOrders() throws LoginSampleException, SQLException {
 
         List<MyOrderList> orderlist = new ArrayList<>();
-        String sqlOrders = "SELECT o.user_id, o.order_id, o.date, ol.quantity, ol.sum, b.name, t.name\n" +
+        String sqlOrders = "SELECT o.status, o.user_id, o.order_id, o.date, ol.quantity, ol.sum, b.name, t.name\n" +
                 "from cupcake.order o\n" +
                 "inner join cupcake.orderline ol on o.order_id = ol.order_id\n" +
                 "inner join cupcake.bottom b on ol.bottom_id = b.bottom_id\n" +
@@ -140,9 +142,10 @@ public class OrderMapper {
                 int sum = resultSet.getInt("sum");
                 String bottom_name = resultSet.getString("name");
                 String topping_name = resultSet.getString("name");
+                String status = resultSet.getString("status");
 
 
-                MyOrderList myOrderList  = new MyOrderList(user_id,order_id,date,quantity,sum,bottom_name,topping_name);
+                MyOrderList myOrderList  = new MyOrderList(user_id,order_id,date,quantity,sum,bottom_name,topping_name,status);
                 orderlist.add(myOrderList);
             }
         } catch (SQLException e) {
@@ -150,6 +153,20 @@ public class OrderMapper {
             e.printStackTrace();
         }
         return orderlist;
+    }
+
+    public static void completeOrder(int order_id) throws LoginSampleException {
+
+        String sql = "UPDATE cupcake.order SET status = 'Completed' WHERE order_id = ?";
+        Connection con = Connector.connection();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, order_id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Fejl i connection til database");
+            e.printStackTrace();
+        }
     }
 }
 
