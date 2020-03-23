@@ -105,6 +105,26 @@ public class UserMapper {
         }
         return userArrayList;
     }
+
+    public static void insertMoney (int user_id, int money) throws LoginSampleException {
+        int result = 0;
+        int newId = 0;
+        String sql = "update cupcake.user set saldo = saldo + ? where user_id = ?";
+        try{
+            Connection con = Connector.connection();
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1,money);
+            ps.setInt(2,user_id);
+            result = ps.executeUpdate();
+        }
+
+        catch (SQLException e) {
+            System.out.println("Fejl i connection til database");
+            e.printStackTrace();
+
+        }
     }
+}
 
 

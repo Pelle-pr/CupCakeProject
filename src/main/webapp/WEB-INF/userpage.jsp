@@ -32,8 +32,13 @@
                     </button>
                 </td>
                 <td>
-                    <button type="submit" class="button" name="saldo" value="${user.id}">Add Money
-                    </button>
+                    <form name="money" action="FrontController" method="POST">
+                        <input type="hidden" name="target" value="userpage">
+                        Indsæt penge:<br>
+                        <input type="text" name="money">
+                        <button type="submit" class="button" name="saldo" value="${user.id}">Add Money
+                        </button>
+                    </form>
                 </td>
 
             </tr>

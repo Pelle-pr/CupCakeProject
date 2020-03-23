@@ -18,6 +18,11 @@ public class Userpage extends Command {
 
         session.setAttribute("allUsersList", LogicFacade.getAllUsers());
 
+        int user_id = (int) request.getAttribute("saldo");
+        int money = (int) request.getAttribute("money");
+
+        LogicFacade.insertMoney(user_id, money);
+
         return "userpage";
         }
     }

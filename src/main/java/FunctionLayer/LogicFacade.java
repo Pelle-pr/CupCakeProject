@@ -39,5 +39,7 @@ public class LogicFacade {
         return OrderMapper.getAllOrders();
     }
 
-
+    public static void insertMoney(int user_id, int money) throws LoginSampleException {
+        UserMapper.insertMoney(user_id, money);
+    }
 }
