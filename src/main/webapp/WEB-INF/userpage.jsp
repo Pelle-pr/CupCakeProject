@@ -3,8 +3,8 @@
 <%@include file="../includes/header.inc" %>
 
 <ul>
-    <li><a class="active" href="FrontController?target=redirect&destination=customerpage">Users</a></li>
-    <li><a href="FrontController?target=redirect&destination=basket">Orders</a></li>
+    <li><a class="active" href="FrontController?target=userpage">Users</a></li>
+    <li><a href="FrontController?target=orderpage">Orders</a></li>
 
 
 </ul>

@@ -3,11 +3,22 @@ package FunctionLayer;
 public class MyOrderList {
 
     int order_id;
+    int customer_id;
     String date;
     int quantity;
     int sum;
     String bottom_name;
     String topping_name;
+
+    public MyOrderList(int customer_id, int order_id, String date, int quantity, int sum, String bottom_name, String topping_name) {
+        this.order_id = order_id;
+        this.customer_id = customer_id;
+        this.date = date;
+        this.quantity = quantity;
+        this.sum = sum;
+        this.bottom_name = bottom_name;
+        this.topping_name = topping_name;
+    }
 
     public MyOrderList(int order_id, String date, int quantity, int sum, String bottom_name, String topping_name) {
         this.order_id = order_id;
@@ -16,6 +27,14 @@ public class MyOrderList {
         this.sum = sum;
         this.bottom_name = bottom_name;
         this.topping_name = topping_name;
+    }
+
+    public int getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
     }
 
     public int getOrder_id() {

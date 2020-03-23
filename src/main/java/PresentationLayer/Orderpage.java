@@ -10,15 +10,14 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class Userpage extends Command {
+public class Orderpage extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, SQLException, ServletException, IOException {
 
         HttpSession session = request.getSession();
 
-        session.setAttribute("allUsersList", LogicFacade.getAllUsers());
+        session.setAttribute("allOrdersList", LogicFacade.getAllOrders());
 
-        return "userpage";
-        }
+        return "orderpage";
     }
-
+}

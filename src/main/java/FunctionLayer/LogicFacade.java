@@ -5,7 +5,9 @@ import DB.OrderMapper;
 import DB.ToppingMapper;
 import DB.UserMapper;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The purpose of LogicFacade is to...
@@ -33,7 +35,9 @@ public class LogicFacade {
         return UserMapper.GetAllUsers();
     }
 
-
+    public static List<MyOrderList> getAllOrders() throws LoginSampleException, SQLException {
+        return OrderMapper.getAllOrders();
+    }
 
 
 }

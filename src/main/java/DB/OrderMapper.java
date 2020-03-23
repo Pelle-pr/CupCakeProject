@@ -119,7 +119,37 @@ public class OrderMapper {
         return orderlist;
     }
 
+    public static List<MyOrderList> getAllOrders() throws LoginSampleException, SQLException {
+
+        List<MyOrderList> orderlist = new ArrayList<>();
+        String sqlOrders = "SELECT o.user_id, o.order_id, o.date, ol.quantity, ol.sum, b.name, t.name\n" +
+                "from cupcake.order o\n" +
+                "inner join cupcake.orderline ol on o.order_id = ol.order_id\n" +
+                "inner join cupcake.bottom b on ol.bottom_id = b.bottom_id\n" +
+                "inner join cupcake.topping t on ol.topping_id = t.topping_id\n" +
+                "order by order_id desc";
+        Connection con = Connector.connection();
+        try  (  PreparedStatement ps = con.prepareStatement(sqlOrders);
+                ResultSet resultSet = ps.executeQuery() )
+        {
+            while (resultSet.next()) {
+                int user_id = resultSet.getInt("user_id");
+                int order_id = resultSet.getInt("order_id");
+                String date = resultSet.getString("date");
+                int quantity = resultSet.getInt("quantity");
+                int sum = resultSet.getInt("sum");
+                String bottom_name = resultSet.getString("name");
+                String topping_name = resultSet.getString("name");
 
 
+                MyOrderList myOrderList  = new MyOrderList(user_id,order_id,date,quantity,sum,bottom_name,topping_name);
+                orderlist.add(myOrderList);
+            }
+        } catch (SQLException e) {
+            System.out.println("Fejl i connection til database");
+            e.printStackTrace();
+        }
+        return orderlist;
+    }
 }
 
