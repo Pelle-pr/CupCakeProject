@@ -7,7 +7,7 @@
     <li><a href="FrontController?target=redirect&destination=basket">Basket</a></li>
     <li><a href="FrontController?target=myorders">My Orders</a></li>
     <li id="saldo"><a href="#" class="not-active">Saldo: ${sessionScope.saldo}</a></li>
-    <li id="email"><a href="#" class="not-active">${sessionScope.email}</a></li>
+    <li id="email"><a href="#" class="not-active">${sessionScope.email}(<li><a href="FrontController?target=logout">Logout</a> </li> </a>
 
 </ul>
 
