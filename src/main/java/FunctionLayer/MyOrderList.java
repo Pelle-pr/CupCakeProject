@@ -9,8 +9,9 @@ public class MyOrderList {
     int sum;
     String bottom_name;
     String topping_name;
+    String status;
 
-    public MyOrderList(int customer_id, int order_id, String date, int quantity, int sum, String bottom_name, String topping_name) {
+    public MyOrderList(int customer_id, int order_id, String date, int quantity, int sum, String bottom_name, String topping_name, String status) {
         this.order_id = order_id;
         this.customer_id = customer_id;
         this.date = date;
@@ -18,15 +19,25 @@ public class MyOrderList {
         this.sum = sum;
         this.bottom_name = bottom_name;
         this.topping_name = topping_name;
+        this.status = status;
     }
 
-    public MyOrderList(int order_id, String date, int quantity, int sum, String bottom_name, String topping_name) {
+    public MyOrderList(int order_id, String date, int quantity, int sum, String bottom_name, String topping_name, String status) {
         this.order_id = order_id;
         this.date = date;
         this.quantity = quantity;
         this.sum = sum;
         this.bottom_name = bottom_name;
         this.topping_name = topping_name;
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getCustomer_id() {

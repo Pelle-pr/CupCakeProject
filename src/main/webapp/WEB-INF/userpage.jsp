@@ -18,7 +18,6 @@
             <td>Password</td>
             <td>Saldo</td>
             <td></td>
-            <td></td>
         </tr>
         <c:forEach var="user" items="${sessionScope.allUsersList}">
             <tr>
@@ -26,11 +25,6 @@
                 <td>${user.email}</td>
                 <td>${user.password}</td>
                 <td>${user.saldo}</td>
-
-                <td>
-                    <button type="submit" class="button" name="remove" value="${user.id}">Remove
-                    </button>
-                </td>
                 <td>
                     <form name="money" action="FrontController" method="POST">
                         <input type="hidden" name="target" value="insertmoney">

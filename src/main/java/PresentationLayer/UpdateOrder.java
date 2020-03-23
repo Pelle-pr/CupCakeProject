@@ -10,15 +10,17 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class Orderpage extends Command {
+public class UpdateOrder extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, SQLException, ServletException, IOException {
 
         HttpSession session = request.getSession();
 
+        int order_id = Integer.parseInt(request.getParameter("complete"));
+
+        LogicFacade.completeOrder(order_id);
+
         session.setAttribute("allOrdersList", LogicFacade.getAllOrders());
-
-
 
         return "orderpage";
     }
