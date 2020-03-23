@@ -60,6 +60,7 @@ public class UserMapper {
         int result = 0;
         int newId = 0;
         String sql = "update cupcake.user set saldo = ? where user_id = ?";
+
         try{
         Connection con = Connector.connection();
         PreparedStatement ps = con.prepareStatement(sql);
@@ -80,13 +81,14 @@ public class UserMapper {
         }
         }
 
-    public static ArrayList<User> GetAllUsers() {
+    public static ArrayList<User> GetAllUsers() throws LoginSampleException {
 
         ArrayList<User> userArrayList = new ArrayList<>();
 
         String sql = "select * from cupcake.user";
-        try (Connection con = Connector.connection();
-             PreparedStatement ps = con.prepareStatement(sql))  {
+        Connection con = Connector.connection();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql) ;
             ResultSet resultSet = ps.executeQuery();
             while (resultSet.next()){
 
@@ -99,10 +101,11 @@ public class UserMapper {
 
                 userArrayList.add(new User(user_id,email,password,role,saldo));
             }
-        } catch (SQLException | LoginSampleException e) {
+        } catch (SQLException e) {
             System.out.println("Fejl i connection til database");
             e.printStackTrace();
         }
+
         return userArrayList;
     }
 
@@ -110,13 +113,15 @@ public class UserMapper {
         int result = 0;
         int newId = 0;
         String sql = "update cupcake.user set saldo = saldo + ? where user_id = ?";
-        try{
-            Connection con = Connector.connection();
-            PreparedStatement ps = con.prepareStatement(sql);
+
+        Connection con = Connector.connection();
+        try {
+             PreparedStatement ps = con.prepareStatement(sql);
 
             ps.setInt(1,money);
             ps.setInt(2,user_id);
-            result = ps.executeUpdate();
+            ps.executeUpdate();
+
         }
 
         catch (SQLException e) {

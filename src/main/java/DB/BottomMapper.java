@@ -19,7 +19,7 @@ public class BottomMapper {
         String sql = "SELECT * FROM cupcake.bottom";
         Connection con = Connector.connection();
         try  (  PreparedStatement ps = con.prepareStatement(sql);
-                ResultSet resultSet = ps.executeQuery(); )
+                ResultSet resultSet = ps.executeQuery() )
         {
             while (resultSet.next()) {
                 int bottom_id = resultSet.getInt("bottom_id");

@@ -10,16 +10,20 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class Userpage extends Command {
+public class InsertMoney extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, SQLException, ServletException, IOException {
 
         HttpSession session = request.getSession();
 
+
+        int user_id = Integer.parseInt(request.getParameter("user_saldo")) ;
+        int money = Integer.parseInt(request.getParameter("money"));
+
+        LogicFacade.insertMoney(user_id, money);
         session.setAttribute("allUsersList", LogicFacade.getAllUsers());
 
 
         return "userpage";
-        }
     }
-
+}
