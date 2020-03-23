@@ -4,7 +4,7 @@
 
 <ul>
     <li><a href="FrontController?target=redirect&destination=customerpage">Cupcakes</a></li>
-    <li><a href="FrontController?target=basket">Basket</a></li>
+    <li><a href="FrontController?target=redirect&destination=basket">Basket</a></li>
     <li><a class="active" href="FrontController?target=redirect&destination=myorders">My Orders</a></li>
     <li id="saldo"><a href="#" class="not-active">Saldo: ${sessionScope.saldo}</a></li>
     <li id="email"><a href="#" class="not-active">${sessionScope.email}</a></li>

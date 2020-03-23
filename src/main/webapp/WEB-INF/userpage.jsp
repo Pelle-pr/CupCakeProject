@@ -3,7 +3,7 @@
 <%@include file="../includes/header.inc" %>
 
 <ul>
-    <li><a class="active" href="FrontController?target=userpage">Users</a></li>
+    <li><a class="active" href="FrontController?target=redirect&destination=customerpage">Users</a></li>
     <li><a href="FrontController?target=redirect&destination=basket">Orders</a></li>
 
 
@@ -27,14 +27,14 @@
                 <td>${user.password}</td>
                 <td>${user.saldo}</td>
 
-            <td>
-                <button type="submit" class="button" name="remove" value="${user.id}">Remove
-                </button>
-            </td>
-            <td>
-                <button type="submit" class="button" name="saldo" value="${user.id}">Add Money
-                </button>
-            </td>
+                <td>
+                    <button type="submit" class="button" name="remove" value="${user.id}">Remove
+                    </button>
+                </td>
+                <td>
+                    <button type="submit" class="button" name="saldo" value="${user.id}">Add Money
+                    </button>
+                </td>
 
             </tr>
         </c:forEach>

@@ -29,6 +29,9 @@ public class LogicFacade {
     public static ArrayList<Topping> getAllToppings() throws LoginSampleException {
         return ToppingMapper.getAllToppings();
     }
+    public static ArrayList<User> getAllUsers() throws LoginSampleException {
+        return UserMapper.GetAllUsers();
+    }
 
 
 

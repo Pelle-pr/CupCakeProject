@@ -5,6 +5,7 @@ import FunctionLayer.User;
 import sun.rmi.runtime.Log;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  The purpose of UserMapper is to...
@@ -78,6 +79,32 @@ public class UserMapper {
 
         }
         }
+
+    public static ArrayList<User> GetAllUsers() {
+
+        ArrayList<User> userArrayList = new ArrayList<>();
+
+        String sql = "select * from cupcake.user";
+        try (Connection con = Connector.connection();
+             PreparedStatement ps = con.prepareStatement(sql))  {
+            ResultSet resultSet = ps.executeQuery();
+            while (resultSet.next()){
+
+                int user_id = resultSet.getInt("user_id");
+                String email = resultSet.getString("email");
+                String password = resultSet.getString("password");
+                String role = resultSet.getString("role");
+                int saldo = resultSet.getInt("saldo");
+
+
+                userArrayList.add(new User(user_id,email,password,role,saldo));
+            }
+        } catch (SQLException | LoginSampleException e) {
+            System.out.println("Fejl i connection til database");
+            e.printStackTrace();
+        }
+        return userArrayList;
+    }
     }
 
 
