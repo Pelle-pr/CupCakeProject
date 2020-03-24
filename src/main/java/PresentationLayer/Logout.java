@@ -17,7 +17,8 @@ public class Logout extends Command {
         session.invalidate();
 
 
+     request.getRequestDispatcher("/index.jsp").forward(request,response);
 
-        return "index";
+     return  null;
     }
 }
