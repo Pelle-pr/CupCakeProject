@@ -85,7 +85,7 @@ public class UserMapper {
 
         ArrayList<User> userArrayList = new ArrayList<>();
 
-        String sql = "select * from cupcake.user";
+        String sql = "select * from user";
         Connection con = Connector.connection();
         try {
             PreparedStatement ps = con.prepareStatement(sql) ;
@@ -112,7 +112,7 @@ public class UserMapper {
     public static void insertMoney (int user_id, int money) throws LoginSampleException {
         int result = 0;
         int newId = 0;
-        String sql = "update cupcake.user set saldo = saldo + ? where user_id = ?";
+        String sql = "update user set saldo = saldo + ? where user_id = ?";
 
         Connection con = Connector.connection();
         try {

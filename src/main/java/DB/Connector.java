@@ -8,9 +8,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Connector {
-    private static final String URL = "jdbc:mysql://localhost:3306/cupcake?serverTimezone=UTC&useSSL=false";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
+    private static  String URL;
+    private static  String USERNAME;
+    private static  String PASSWORD;
+
     private static Connection singleton;
 
     public static void setConnection(Connection con) {
@@ -19,7 +20,9 @@ public class Connector {
 
     public static Connection connection() throws LoginSampleException {
         if (singleton == null) {
+
             try {
+                setDBCredentials();
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 singleton = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             } catch (ClassNotFoundException | SQLException e){
@@ -29,4 +32,22 @@ public class Connector {
         }
         return singleton;
     }
+    public static void setDBCredentials() {
+        String deployed = System.getenv("DEPLOYED");
+
+        if (deployed != null){
+            //Prod
+            URL = System.getenv("JDBC_CONNECTION_STRING");
+            USERNAME = System.getenv("JDBC_USER");
+            PASSWORD = System.getenv("JDBC_PASSWORD");
+        } else {
+            //LocalHost
+
+        URL = "jdbc:mysql://localhost:3306/cupcake?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true";
+        USERNAME = "root";
+        PASSWORD = "root";
+    }
+
+    }
+
 }
