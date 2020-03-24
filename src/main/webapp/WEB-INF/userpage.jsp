@@ -5,6 +5,7 @@
 <ul>
     <li><a class="active" href="FrontController?target=userpage">Users</a></li>
     <li><a href="FrontController?target=orderpage">Orders</a></li>
+    <li id="email"><a href="FrontController?target=logout">${sessionScope.email} (logout)</a>
 
 
 </ul>
