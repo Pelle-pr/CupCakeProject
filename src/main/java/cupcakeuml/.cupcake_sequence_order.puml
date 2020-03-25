@@ -1,0 +1,60 @@
+@startuml
+
+autonumber
+title Order
+actor customer
+
+
+boundary customerpage.jsp
+boundary basket.jsp
+control FrontController
+
+customer -> customerpage.jsp
+customerpage.jsp -> FrontController: http GET
+FrontController -> FrontController: processRequest()
+FrontController -> Command: from()
+Command -> NewCupcake: execute()
+NewCupcake -> Basket: basket.addCupcake()
+Basket --> customerpage.jsp
+customerpage.jsp -> basket.jsp
+basket.jsp -> FrontController: http POST
+FrontController -> NewOrder: execute()
+NewOrder -> LogicFacade: transaction()
+LogicFacade -> OrderMapper: transaction()
+
+
+
+
+
+
+
+
+'== Initialization ==
+'box
+'Login -> LogicFacade: getBottoms()
+'Initializer --> index.jsp: ArrayList<Sport>
+'end box
+'== Beregn BMI ==
+'box PresentationLayer
+'control FrontController
+'index.jsp -> FrontController: doPost()
+'
+'
+'Command --> FrontController: customerpage.jsp
+'FrontController -> Resultat: execute()
+'end box
+'
+'box LogicFacade
+'Resultat -> LogicFacade: insertBmiItem()
+'end box
+'
+'box DBAccess
+'LogicFacade -> BmiMapper: insertBmiItem()
+'end box
+
+database CupcakeDB
+OrderMapper -> CupcakeDB: executeQuery()
+CupcakeDB --> basket.jsp
+
+@enduml
+

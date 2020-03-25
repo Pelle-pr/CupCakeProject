@@ -1,0 +1,56 @@
+@startuml
+
+autonumber
+title Log in
+actor customer
+
+boundary index.jsp
+boundary customerpage.jsp
+control FrontController
+
+customer -> index.jsp: username & password
+index.jsp -> FrontController: http POST login
+FrontController -> FrontController: processRequest()
+FrontController -> Command: from()
+Command -> Login: execute()
+Login -> LogicFacade: login()
+LogicFacade -> UserMapper: UserMapper.login()
+
+
+
+
+
+
+'== Initialization ==
+'box
+'Login -> LogicFacade: getBottoms()
+'Initializer --> index.jsp: ArrayList<Sport>
+'end box
+'== Beregn BMI ==
+'box PresentationLayer
+'control FrontController
+'index.jsp -> FrontController: doPost()
+'
+'
+'Command --> FrontController: customerpage.jsp
+'FrontController -> Resultat: execute()
+'end box
+'
+'box LogicFacade
+'Resultat -> LogicFacade: insertBmiItem()
+'end box
+'
+'box DBAccess
+'LogicFacade -> BmiMapper: insertBmiItem()
+'end box
+
+database CupcakeDB
+UserMapper -> CupcakeDB: executeQuery()
+CupcakeDB --> UserMapper: OK
+UserMapper --> LogicFacade: OK
+LogicFacade --> Login: OK
+Login --> FrontController: customerpage
+FrontController --> customerpage.jsp: forward()
+
+@enduml
+

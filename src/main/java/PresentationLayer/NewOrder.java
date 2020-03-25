@@ -2,6 +2,7 @@ package PresentationLayer;
 
 import DB.UserMapper;
 import FunctionLayer.Basket;
+import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
 
@@ -30,7 +31,7 @@ public class NewOrder extends Command {
 
             if (saldo >= totalSum) {
                 int newSaldo = saldo - totalSum;
-                DB.OrderMapper.transaction(user_id, basket);
+                LogicFacade.transaction(user_id, basket);
                 UserMapper.opdaterSaldo(user_id, newSaldo);
                 basket.getCupCakeList().clear();
                 session.setAttribute("saldo", newSaldo );

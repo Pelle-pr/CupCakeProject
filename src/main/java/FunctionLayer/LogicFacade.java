@@ -46,4 +46,8 @@ public class LogicFacade {
     public static void completeOrder(int order_id) throws LoginSampleException {
         OrderMapper.completeOrder(order_id);
     }
+
+    public static void transaction (int user_id, Basket basket) throws LoginSampleException, SQLException {
+        OrderMapper.transaction(user_id, basket);
+    }
 }
