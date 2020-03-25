@@ -1,0 +1,44 @@
+@startuml
+Title Cupcake State
+
+state index.jsp
+state "Error Login.jsp" as error
+
+note top of customerpage.jsp
+Username and role
+stored in session
+end note
+
+[*] -> index.jsp
+index.jsp --> customerpage.jsp : ok
+index.jsp --> adminpage.jsp : ok
+index.jsp --> error : user and pw not ok
+error --> index.jsp : try again
+
+state customerpage.jsp {
+state basket.jsp
+state myorders.jsp
+note bottom of basket.jsp
+Session stored items in basket
+end note
+note bottom of myorders.jsp
+Retrieving orders stored in DB
+end note
+[*] --> basket.jsp
+[*] --> myorders.jsp
+customerpage.jsp -left-> index.jsp : logout
+}
+state adminpage.jsp {
+state orderpage.jsp
+state userpage.jsp
+note bottom of orderpage.jsp
+All orders stored in DB
+end note
+note bottom of userpage.jsp
+All users stored in DB
+end note
+[*] --> orderpage.jsp
+[*] --> userpage.jsp
+adminpage.jsp --> index.jsp : logout
+}
+@enduml
