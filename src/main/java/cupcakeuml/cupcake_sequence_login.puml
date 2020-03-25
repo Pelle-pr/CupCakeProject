@@ -1,7 +1,7 @@
 @startuml
 
 autonumber
-title Log in
+title Login
 actor customer
 
 boundary index.jsp
@@ -12,8 +12,13 @@ customer -> index.jsp: username & password
 index.jsp -> FrontController: http POST login
 FrontController -> FrontController: processRequest()
 FrontController -> Command: from()
-Command -> Login: execute()
-Login -> LogicFacade: login()
+Command -> ":Login": execute()
+":Login" -> LogicFacade: getBottoms()
+LogicFacade -> BottomMapper: getBottoms()
+BottomMapper -> CupcakeDB: getBottoms()
+CupcakeDB --> LogicFacade: ArrayList<Bottoms>
+LogicFacade --> ":Login": ArrayList<Bottoms>
+":Login" -> LogicFacade: login()
 LogicFacade -> UserMapper: UserMapper.login()
 
 
@@ -48,8 +53,8 @@ database CupcakeDB
 UserMapper -> CupcakeDB: executeQuery()
 CupcakeDB --> UserMapper: OK
 UserMapper --> LogicFacade: OK
-LogicFacade --> Login: OK
-Login --> FrontController: customerpage
+LogicFacade --> ":Login": OK
+":Login" --> FrontController: customerpage
 FrontController --> customerpage.jsp: forward()
 
 @enduml
