@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Denne klassen bruges til at opprette en handlekurv for kunden, hvor de bestilte cupcakes legges til i en arrayliste (cupCakeList),
+ * Formålet til denne klasse er at opprette en handlekurv for kunden, hvor de bestilte cupcakes legges til i en arrayliste (cupCakeList),
  * hver cupcake tilsvarer en ordrelinje i DB. Denne klassen inneholder også metoder for å fjerne en cupcake
  * før ordren er gjennomført, samt en metode der opplyser kunden om totalsum for det kunden ønsker å bestille. Der er lavet getters
  * & setters for de ulike atributer i klassen slik at de nås udenfra.
