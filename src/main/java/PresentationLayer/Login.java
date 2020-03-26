@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- The purpose of Login is to...
+ * Login henter alle Topping, Bottom, og Quantity listerne og ligger på Servletcontext.
+ * Redirecter brugeren til Customerpage hvis brugerens rolle er "Customer"
+ * Redirecter brugeren til Adminpage hvis brugerens roller er "Admin"
 
  @author kasper
  */

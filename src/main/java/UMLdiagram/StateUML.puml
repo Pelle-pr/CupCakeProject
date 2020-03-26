@@ -1,0 +1,9 @@
+@startuml
+Title Logging in
+state Loggedinascostumer{
+state basket.jsp
+
+}
+State Logging
+[*] -> LoggedIn
+@enduml

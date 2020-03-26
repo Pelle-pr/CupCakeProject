@@ -9,6 +9,10 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
+
+/**
+ * Logger brugeren ud, og sender dem tilbage til index.jsp
+ */
 public class Logout extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, SQLException, ServletException, IOException {

@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Ligger en ny cupcake is kurven, med de Topping, Bottom og Quantity parametre som brugeren har valgt på frontend.
+ */
+
 public class NewCupCake extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
@@ -43,6 +47,13 @@ public class NewCupCake extends Command {
         return "customerpage" ;
     }
 
+    /**
+     * Finder hvilken bottom brugeren har valgt udfra bottom ID.
+     * @param bottom_id // Request.parameteret
+     * @param bottomArrayList
+     * @return
+     */
+
     private Bottom findBottom(int bottom_id, ArrayList<Bottom> bottomArrayList) {
 
 
@@ -54,25 +65,22 @@ public class NewCupCake extends Command {
         }
         return null;
     }
-    private Topping findTopping(int bottom_id, ArrayList<Topping> toppingArrayList) {
+    /**
+     * Finder hvilken topping brugeren har valgt udfra topping ID.
+     * @param topping_id // Request.parameteret
+     * @param toppingArrayList
+     * @return
+     */
+    private Topping findTopping(int topping_id, ArrayList<Topping> toppingArrayList) {
 
 
         for (Topping topping : toppingArrayList) {
-            if (topping.getId() == bottom_id) {
+            if (topping.getId() == topping_id) {
                 return topping;
             }
 
         }
         return null;
-    }
-    private int getTotalBasketSum (Set<Basket> basketSet){
-
-        int res = 0;
-        for (Basket basket : basketSet) {
-            res = res + basket.getCupCake().getSum();
-
-        }
-        return res;
     }
 
 

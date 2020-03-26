@@ -10,6 +10,11 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
+
+/**
+ * Finder alle brugerens ordre som er lagret i databasen.
+ */
+
 public class MyOrder extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, SQLException, ServletException, IOException {

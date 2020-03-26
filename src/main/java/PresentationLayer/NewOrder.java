@@ -14,7 +14,13 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Set;
 
+/**
+ * Sender hele kundens orderliste til bestilling i shoppen.
+ * tjekker om kunden har penge nok på sin konto til at fuldføre bestillingen.
+ * Bestillingen bliver lagret i Databasen.
+ */
 public class NewOrder extends Command {
+
 
 
     @Override

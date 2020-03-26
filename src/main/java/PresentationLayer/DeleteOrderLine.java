@@ -14,7 +14,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Set;
 
+/**
+ * Sletter en ordrelinje fra Brugerens Kurv.
+ * Får parameter Order ID.
+ */
 public class DeleteOrderLine extends Command {
+
 
 
     @Override

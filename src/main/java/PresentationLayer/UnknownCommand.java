@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- The purpose of UnknownCommand is to...
+ Hvis en udefineret fejl sker får brugeren en meddelse.
 
  @author kasper
  */

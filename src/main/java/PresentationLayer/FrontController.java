@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 /**
-
+ FrontControlleren er den centrale klasse som leder og fordeler arbejdet
  @author kasper
  */
 @WebServlet( name = "FrontController", urlPatterns = { "/FrontController" } )

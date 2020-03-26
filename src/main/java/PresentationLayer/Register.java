@@ -8,6 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Command til at registere en ny bruger
+ * Får parametrene Email og Kodeord fra Useren på frontend
+ */
+
 public class Register extends Command {
 
     @Override

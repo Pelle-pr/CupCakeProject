@@ -10,6 +10,10 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * Indsætter penge på useren saldo, dette er kun Admin der har adgang til dette.
+ *
+ */
 public class InsertMoney extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, SQLException, ServletException, IOException {
