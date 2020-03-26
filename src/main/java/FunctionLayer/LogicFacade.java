@@ -10,8 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The purpose of LogicFacade is to...
- * @author kasper
+ * Formålet med LogicFacaden er at gi tilgang til de ulike metoder der ligger i DB, ved at la disse metoder gå innom
+ * logicfacaden setter man opp en facade mellom "presentaitionlayer" og DB. Fortrinnsvis skulle
+ * alle metoder der ikke ligger i presentationlayer legges innom logicfacaden.
  */
 public class LogicFacade {
 

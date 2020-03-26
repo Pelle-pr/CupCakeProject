@@ -1,8 +1,9 @@
 package FunctionLayer;
 
 /**
- * The purpose of User is to...
- * @author kasper
+ * Formålet til denne klasse er at kunne generere en bruger. Der er lavet getters
+ * & setters for de ulike atributer i klassen slik at de nås udenfra.
+ *
  */
 public class User {
 

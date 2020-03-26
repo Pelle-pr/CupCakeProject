@@ -1,5 +1,10 @@
 package FunctionLayer;
 
+/**
+ * Formålet til denne klasse er at generere en liste over de ordre en kunde har foretatt seg, der er lavet getters
+ * & setters for de ulike atributer i klassen slik at de nås udenfra.
+ */
+
 public class MyOrderList {
 
     int order_id;

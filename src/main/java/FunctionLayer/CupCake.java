@@ -5,6 +5,13 @@ import UtilHelpers.Quantity;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * Fårmålet med denne klasser er at kunne generere en cupcake, en cupcake tilsvarer en ordrelinje i DB. Der er lavet getters
+ *& setters for de ulike atributer i klassen slik at de nås udenfra.
+ * @author MMP
+ * @version 1.0
+ */
+
 
 public class CupCake  {
 

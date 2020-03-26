@@ -3,6 +3,15 @@ package FunctionLayer;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Denne klassen bruges til at opprette en handlekurv for kunden, hvor de bestilte cupcakes legges til i en arrayliste (cupCakeList),
+ * hver cupcake tilsvarer en ordrelinje i DB. Denne klassen inneholder også metoder for å fjerne en cupcake
+ * før ordren er gjennomført, samt en metode der opplyser kunden om totalsum for det kunden ønsker å bestille. Der er lavet getters
+ * & setters for de ulike atributer i klassen slik at de nås udenfra.
+ * @author MMP
+ * @version 1.0
+ */
+
 public class Basket {
 
     CupCake cupCake;
@@ -11,7 +20,13 @@ public class Basket {
     private int count = 0;
     int totalSum;
 
+    /**
+     * Oppretter en arrayliste (cupCakeList) slik at kunden kan legge til cupcakes(ordrelinier) i sin bestilling
+     * @param cupCake
+     */
+
     public Basket(CupCake cupCake) {
+
         if (cupCakeList == null){
             cupCakeList = new ArrayList<>();
         }
@@ -22,11 +37,21 @@ public class Basket {
         //this.totalSum += cupCake.getSum();
     }
 
+    /**
+     * Legger en cupcake(ordrelinie) inn i en arrayliste (cupCakeList)
+     * @param cupCake
+     */
+
     public void addCupcake(CupCake cupCake){
         this.count++;
         cupCake.setOrderline_id(count);
         this.cupCakeList.add(cupCake);
     }
+
+    /**
+     * Legger sammen summen av alle cupcakes(ordrelinier) i en arrayliste (cupCakeList)
+     * @return sum
+     */
 
     public int getTotalSum(){
         int sum = 0;
@@ -36,6 +61,11 @@ public class Basket {
         return sum;
     }
 
+    /**
+     * Henter en spesifikk cupcake(ordreline) fra en arrayliste (cupCakeList) slik at den kan slettes ved hjelp av medtoden removeCupcake
+     * @param id
+     * @return
+     */
     public CupCake getCupCakeById(int id){
         for (CupCake cake : cupCakeList) {
             if (cake.getOrderline_id() == id) {
@@ -45,6 +75,10 @@ public class Basket {
         return null;
     }
 
+    /**
+     * Sletter en cupcake(ordrelinie) fra en arrayliste (cupCakeList)
+     * @param id
+     */
     public void removeCupcake(int id){
         CupCake cupcakeToRemove = getCupCakeById(id);
         if (cupcakeToRemove != null){

@@ -1,4 +1,8 @@
 package FunctionLayer;
+/**
+ * Formålet med denne klasse er at kunne generere de ulike cupcake-topper kunden kan velge mellom. Der er lavet getters
+ * & setters for de ulike atributer i klassen slik at de nås udenfra.
+ */
 
 public class Topping {
 
