@@ -10,7 +10,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Formålet er at udføre CRUD-operationer i bottom-tabellen i DB
+ * @author MMP
+ * @version 1.0
+ */
+
 public class BottomMapper {
+
+    /**
+     * Henter alle bottoms fra DB ned i en arraylist
+     * @return Returnerer en arraylist med bottoms
+     * @throws LoginSampleException
+     */
 
     public static ArrayList<Bottom> getAllBottoms() throws LoginSampleException {
 

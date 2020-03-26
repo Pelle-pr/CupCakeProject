@@ -8,11 +8,18 @@ import java.sql.*;
 import java.util.ArrayList;
 
 /**
- The purpose of UserMapper is to...
-
- @author kasper
+ * Formålet er at udføre CRUD-operationer i user-tabellen i DB
+ @author kasper (createUser + login)
+ @author MMP (opdaterSaldo, insertMoney + GetAllUsers)
  */
+
 public class UserMapper {
+
+    /**
+     * Indsætter en ny bruger i databasen efter registrering
+     * @param user
+     * @throws LoginSampleException
+     */
 
     public static void createUser( User user ) throws LoginSampleException {
         Connection con = Connector.connection();
@@ -32,6 +39,14 @@ public class UserMapper {
             throw new LoginSampleException( ex.getMessage() );
         }
     }
+
+    /**
+     * Via login hentes/indlæses specifik bruger fra databasen
+     * @param email
+     * @param password
+     * @return Hvis login er succesfuldt returneres user
+     * @throws LoginSampleException
+     */
 
     public static User login(String email, String password ) throws LoginSampleException {
         try {
@@ -55,6 +70,11 @@ public class UserMapper {
         } catch (SQLException ex ) {
             throw new LoginSampleException(ex.getMessage());
         }
+
+        /**
+         * Opdaterer brugerens saldo efter et køb er gennemført
+         */
+
     }
     public static void opdaterSaldo(int user_id, int newSaldo) throws LoginSampleException {
         int result = 0;
@@ -80,6 +100,12 @@ public class UserMapper {
 
         }
         }
+
+    /**
+     * Henter alle users fra DB ned i en arraylist
+     * @return Returnerer en arraylist med users
+     * @throws LoginSampleException
+     */
 
     public static ArrayList<User> GetAllUsers() throws LoginSampleException {
 
@@ -108,6 +134,13 @@ public class UserMapper {
 
         return userArrayList;
     }
+
+    /**
+     * Opdaterer en saldo med X antal kr. (input fra admin)
+     * @param user_id
+     * @param money
+     * @throws LoginSampleException
+     */
 
     public static void insertMoney (int user_id, int money) throws LoginSampleException {
         int result = 0;

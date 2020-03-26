@@ -7,6 +7,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * Sørger for at skabe forbindelse til DB
+ */
+
 public class Connector {
     private static  String URL;
     private static  String USERNAME;
@@ -32,6 +36,11 @@ public class Connector {
         }
         return singleton;
     }
+
+    /**
+     * Sætter DB credentials alt efter om det er localhost eller deploy-versionen
+     */
+
     public static void setDBCredentials() {
         String deployed = System.getenv("DEPLOYED");
 

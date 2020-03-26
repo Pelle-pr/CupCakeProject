@@ -4,7 +4,23 @@ import FunctionLayer.LoginSampleException;
 
 import java.sql.*;
 
+/**
+ * Formålet er at udføre CRUD-operationer i orderline-tabellen i DB
+ * @author MMP
+ * @version 1.0
+ */
+
 public class OrderLineMapper {
+
+    /**
+     * Indsætter ordreline(s) i databasen
+     * @param orderId
+     * @param quantity
+     * @param sum
+     * @param bottomId
+     * @param toppingId
+     * @return Orderline ID
+     */
 
     public static  int insertOrderLine (int orderId, int quantity, int sum, int bottomId, int toppingId) {
 

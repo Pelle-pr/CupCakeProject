@@ -9,7 +9,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Formålet er at udføre CRUD-operationer i bottom-tabellen i DB
+ * @author MMP
+ * @version 1.0
+ */
+
 public class ToppingMapper {
+
+    /**
+     * Henter alle toppings fra DB ned i en arraylist
+     * @return Returnerer en arraylist med toppings
+     * @throws LoginSampleException
+     */
 
     public static ArrayList<Topping> getAllToppings() throws LoginSampleException {
 

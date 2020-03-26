@@ -11,9 +11,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Formålet er at udføre CRUD-operationer i order-tabellen i DB
+ * @author MMP
+ * @version 1.0
+ */
 
 public class OrderMapper {
 
+    /**
+     * Indsætter ordre i databasen
+     * @param userId
+     * @param date
+     * @return Order ID
+     */
 
     public static int insertOrder(int userId, String date) {
 
@@ -40,6 +51,14 @@ public class OrderMapper {
         return orderId;
     }
 
+    /**
+     * Klarer både at indsætte orderline(s) og ordre i databasen vha. SQL-transaction
+     * @param userId
+     * @param basket
+     * @throws SQLException
+     * @throws LoginSampleException
+     */
+
     public static int transaction(int userId, Basket basket) throws SQLException, LoginSampleException {
 
         LocalDate date = LocalDate.now();
@@ -53,7 +72,7 @@ public class OrderMapper {
             try (PreparedStatement ps = con.prepareStatement(sqlOrder, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setInt(1, userId);
                 ps.setDate(2, Date.valueOf(date));
-                ps.setString(3, "Bestilt");
+                ps.setString(3, "Processing");
                 ps.executeUpdate();
 
                 ResultSet idResultSet = ps.getGeneratedKeys();
@@ -88,6 +107,14 @@ public class OrderMapper {
         return 0;
     }
 
+    /**
+     * Indhenter orderliste, lavet vha. inner joins, fra databasen på ID-basis, fx for bruger med user ID nr. 5
+     * @param user_id
+     * @return En arrayliste med ordre (på det specifikke user ID)
+     * @throws LoginSampleException
+     * @throws SQLException
+     */
+
     public static List<MyOrderList> myOrdersByID (int user_id) throws LoginSampleException, SQLException {
 
         List<MyOrderList> orderlist = new ArrayList<>();
@@ -120,6 +147,13 @@ public class OrderMapper {
         }
         return orderlist;
     }
+
+    /**
+     * Henter alle orders fra DB ned i en arraylist
+     * @return Returnerer arraylist med orders
+     * @throws LoginSampleException
+     * @throws SQLException
+     */
 
     public static List<MyOrderList> getAllOrders() throws LoginSampleException, SQLException {
 
@@ -154,6 +188,12 @@ public class OrderMapper {
         }
         return orderlist;
     }
+
+    /**
+     * Opdaterer status på en ordre fra at stå som 'processing' til 'completed'
+     * @param order_id
+     * @throws LoginSampleException
+     */
 
     public static void completeOrder(int order_id) throws LoginSampleException {
 
