@@ -1,0 +1,58 @@
+@startuml
+
+class User
+class Basket
+class CupCake
+class Bottom
+class Topping
+class Order
+
+class User {
+id
+email
+password
+role
+saldo
+}
+
+User "1" -- "*" Order
+User "1" -- "1" Basket
+
+class Basket {
+CupCake
+totalsum
+}
+
+Basket "1" -- "*" CupCake
+
+class CupCake {
+Bottom
+Topping
+sum
+}
+
+CupCake "*" -- "1" Bottom
+CupCake "*" -- "1" Topping
+
+class Bottom {
+id
+name
+}
+
+class Topping {
+id
+name
+}
+
+class Order {
+id
+date
+status
+}
+
+Order "1" -- "*" CupCake
+
+hide method
+hide circle
+
+@enduml

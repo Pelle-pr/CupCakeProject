@@ -1,0 +1,30 @@
+@startuml
+Title Olsker Cupcakes
+|Customer|
+start
+:Go to website;
+|#AntiqueWhite|Webshop|
+repeat
+:Login;
+|Customer|
+:Input credentials;
+|Webshop|
+repeat while (Credentials true?) is (no)
+->yes;
+|Customer|
+:Order cupcakes;
+|Webshop|
+:Order placed;
+|Customer|
+fork
+:Drive to shop;
+|Boutique|
+:Arrive at shop;
+fork again
+|Boutique|
+:Make cupcakes;
+:Pack cupcakes;
+end fork
+:Pick up cupcakes;
+stop
+@enduml

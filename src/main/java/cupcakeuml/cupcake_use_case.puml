@@ -1,0 +1,17 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor customer
+actor admin
+rectangle "CupCake Webshop" {
+  customer -- (Registration)
+  customer -- (Login)
+  customer -- (Place order)
+  customer -- (View my orders)
+  customer -- (Checkout order)
+  admin -- (Login)
+  admin -- (View all orders)
+  admin -- (Add to saldo)
+  admin -- (Complete orders)
+}
+@enduml
