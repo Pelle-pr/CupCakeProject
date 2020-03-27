@@ -16,11 +16,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class CupCake  {
 
 
-    int orderline_id;
-    Bottom bottom;
-    Topping topping;
-    int quantity;
-    int sum;
+    private int orderline_id;
+    private Bottom bottom;
+    private Topping topping;
+    private int quantity;
+    private int sum;
 
     public int getOrderline_id() {
         return orderline_id;

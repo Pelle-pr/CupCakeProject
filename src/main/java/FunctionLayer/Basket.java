@@ -14,11 +14,11 @@ import java.util.List;
 
 public class Basket {
 
-    CupCake cupCake;
+    private CupCake cupCake;
 
     private List<CupCake> cupCakeList = null;
     private int count = 0;
-    int totalSum;
+    private int totalSum;
 
     /**
      * Oppretter en arrayliste (cupCakeList) slik at kunden kan legge til cupcakes(ordrelinier) i sin bestilling

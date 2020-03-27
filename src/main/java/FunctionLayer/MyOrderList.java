@@ -7,14 +7,14 @@ package FunctionLayer;
 
 public class MyOrderList {
 
-    int order_id;
-    int customer_id;
-    String date;
-    int quantity;
-    int sum;
-    String bottom_name;
-    String topping_name;
-    String status;
+    private int order_id;
+    private int customer_id;
+    private String date;
+    private int quantity;
+    private int sum;
+    private String bottom_name;
+    private String topping_name;
+    private String status;
 
     public MyOrderList(int customer_id, int order_id, String date, int quantity, int sum, String bottom_name, String topping_name, String status) {
         this.order_id = order_id;

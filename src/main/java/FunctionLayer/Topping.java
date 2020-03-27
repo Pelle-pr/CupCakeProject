@@ -6,9 +6,9 @@ package FunctionLayer;
 
 public class Topping {
 
-    int id;
-    String name;
-    int price;
+    private int id;
+    private String name;
+    private int price;
 
     public Topping(int id, String name, int price) {
         this.id = id;
