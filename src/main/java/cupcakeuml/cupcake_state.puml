@@ -2,7 +2,7 @@
 Title Cupcake State
 
 state index.jsp
-state "Error Login.jsp" as error
+state "Error Login" as error
 
 note top of customerpage.jsp
 Username and role
