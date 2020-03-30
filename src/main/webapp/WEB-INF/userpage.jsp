@@ -12,7 +12,7 @@
 
 
 <div class="text-center">
-    <table class="table table-striped">
+    <table class="table table-striped mt-2">
         <tr>
             <td>User ID</td>
             <td>Email</td>

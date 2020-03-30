@@ -12,7 +12,7 @@
 
 
 <div class="text-center">
-    <table class="table table-striped">
+    <table class="table table-striped mt-2">
         <tr><td>Order number</td><td>Date</td><td>Quantity</td><td>Bottom</td><td>Topping</td><td>Sum</td><td>Status</td></tr>
         <c:forEach var="orders" items="${sessionScope.myorderlist}">
         <tr><td>${orders.order_id}</td><td>${orders.date}</td><td>${orders.quantity}</td><td>${orders.bottom_name}</td><td>${orders.topping_name}</td><td>${orders.sum}</td><td>${orders.status}</td></tr>
