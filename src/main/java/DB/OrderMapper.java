@@ -180,27 +180,17 @@ public class OrderMapper {
     }
 
     public static void deleteOrder (int order_id) throws LoginSampleException, SQLException {
-        String sql1 ="DELETE FROM cupcake.order WHERE order_id = ? ";
-        String sql2 = "DELETE FROM cupcake.orderline WHERE order_id = ?";
-
-        try  {
-            Connection con = Connector.connection();
-            con.setAutoCommit(false);
-            try (PreparedStatement ps = con.prepareStatement(sql1)) {
-                ps.setInt(1, order_id);
-                try (PreparedStatement ps1 = con.prepareStatement(sql2)){
-                    ps1.setInt(1,order_id);
-                }
-                ps.executeUpdate();
-            }
-            con.commit();
-            con.setAutoCommit(true);
-
+        String sql = "DELETE FROM cupcake.order\n" +
+                "WHERE order_id = ?";
+        Connection con = Connector.connection();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, order_id);
+            ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Fejl i connection til database");
             e.printStackTrace();
         }
-
     }
 }
 
