@@ -195,7 +195,7 @@ public class OrderMapper {
      * @throws LoginSampleException
      */
 
-    public static void completeOrder(int order_id) throws LoginSampleException {
+    public static void completeOrder(int order_id) throws LoginSampleException, SQLException {
 
         String sql = "UPDATE cupcake.order SET status = 'Completed' WHERE order_id = ?";
         Connection con = Connector.connection();

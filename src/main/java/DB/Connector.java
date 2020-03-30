@@ -22,8 +22,8 @@ public class Connector {
         singleton = con;
     }
 
-    public static Connection connection() throws LoginSampleException {
-        if (singleton == null) {
+    public static Connection connection() throws LoginSampleException, SQLException {
+        if ((singleton == null) || singleton.isClosed()) {
 
             try {
                 setDBCredentials();

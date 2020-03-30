@@ -21,7 +21,7 @@ public class UserMapper {
      * @throws LoginSampleException
      */
 
-    public static void createUser( User user ) throws LoginSampleException {
+    public static void createUser( User user ) throws LoginSampleException, SQLException {
         Connection con = Connector.connection();
         String SQL = "INSERT INTO user (email, password, role, saldo) VALUES (?, ?, ?, ?)";
         try (PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS))
@@ -107,7 +107,7 @@ public class UserMapper {
      * @throws LoginSampleException
      */
 
-    public static ArrayList<User> GetAllUsers() throws LoginSampleException {
+    public static ArrayList<User> GetAllUsers() throws LoginSampleException, SQLException {
 
         ArrayList<User> userArrayList = new ArrayList<>();
 
@@ -142,7 +142,7 @@ public class UserMapper {
      * @throws LoginSampleException
      */
 
-    public static void insertMoney (int user_id, int money) throws LoginSampleException {
+    public static void insertMoney (int user_id, int money) throws LoginSampleException, SQLException {
         int result = 0;
         int newId = 0;
         String sql = "update user set saldo = saldo + ? where user_id = ?";

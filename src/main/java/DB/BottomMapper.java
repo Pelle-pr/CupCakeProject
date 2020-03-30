@@ -24,7 +24,7 @@ public class BottomMapper {
      * @throws LoginSampleException
      */
 
-    public static ArrayList<Bottom> getAllBottoms() throws LoginSampleException {
+    public static ArrayList<Bottom> getAllBottoms() throws LoginSampleException, SQLException {
 
         ArrayList<Bottom> bottomList = new ArrayList<>();
 

@@ -20,19 +20,19 @@ public class LogicFacade {
         return UserMapper.login( email, password );
     } 
 
-    public static User createUser(String email, String password) throws LoginSampleException {
+    public static User createUser(String email, String password) throws LoginSampleException, SQLException {
         User user = new User(email, password, "customer", 500);
         UserMapper.createUser( user );
         return user;
     }
-    public static ArrayList<Bottom> getAllBottoms() throws LoginSampleException {
+    public static ArrayList<Bottom> getAllBottoms() throws LoginSampleException, SQLException {
         return BottomMapper.getAllBottoms();
     }
 
-    public static ArrayList<Topping> getAllToppings() throws LoginSampleException {
+    public static ArrayList<Topping> getAllToppings() throws LoginSampleException, SQLException {
         return ToppingMapper.getAllToppings();
     }
-    public static ArrayList<User> getAllUsers() throws LoginSampleException {
+    public static ArrayList<User> getAllUsers() throws LoginSampleException, SQLException {
         return UserMapper.GetAllUsers();
     }
 
@@ -40,15 +40,16 @@ public class LogicFacade {
         return OrderMapper.getAllOrders();
     }
 
-    public static void insertMoney(int user_id, int money) throws LoginSampleException {
+    public static void insertMoney(int user_id, int money) throws LoginSampleException, SQLException {
         UserMapper.insertMoney(user_id, money);
     }
 
-    public static void completeOrder(int order_id) throws LoginSampleException {
+    public static void completeOrder(int order_id) throws LoginSampleException, SQLException {
         OrderMapper.completeOrder(order_id);
     }
 
     public static void transaction (int user_id, Basket basket) throws LoginSampleException, SQLException {
         OrderMapper.transaction(user_id, basket);
     }
+
 }

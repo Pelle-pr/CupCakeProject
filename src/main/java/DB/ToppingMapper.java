@@ -23,7 +23,7 @@ public class ToppingMapper {
      * @throws LoginSampleException
      */
 
-    public static ArrayList<Topping> getAllToppings() throws LoginSampleException {
+    public static ArrayList<Topping> getAllToppings() throws LoginSampleException, SQLException {
 
         ArrayList<Topping> toppingList = new ArrayList<>();
         Connection con = Connector.connection();
