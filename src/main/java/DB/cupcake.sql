@@ -57,7 +57,7 @@ CREATE TABLE `order` (
   PRIMARY KEY (`order_id`),
   KEY `fk_user_id_idx` (`user_id`),
   CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +66,7 @@ CREATE TABLE `order` (
 
 LOCK TABLES `order` WRITE;
 /*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES (12,'2020-03-29',2,'Processing'),(13,'2020-03-29',2,'Processing'),(14,'2020-03-29',2,'Processing'),(15,'2020-03-29',2,'Processing');
+INSERT INTO `order` VALUES (13,'2020-03-29',2,'Processing'),(14,'2020-03-29',2,'Processing'),(16,'2020-03-29',2,'Processing'),(17,'2020-03-29',3,'Processing'),(18,'2020-03-29',6,'Processing'),(19,'2020-03-29',7,'Processing');
 /*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,7 +91,7 @@ CREATE TABLE `orderline` (
   CONSTRAINT `fk_bottom_id` FOREIGN KEY (`bottom_id`) REFERENCES `bottom` (`bottom_id`),
   CONSTRAINT `fk_order_id` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON DELETE CASCADE,
   CONSTRAINT `fk_topping_id` FOREIGN KEY (`topping_id`) REFERENCES `topping` (`topping_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +100,7 @@ CREATE TABLE `orderline` (
 
 LOCK TABLES `orderline` WRITE;
 /*!40000 ALTER TABLE `orderline` DISABLE KEYS */;
-INSERT INTO `orderline` VALUES (26,12,4,40,1,3),(27,13,2,24,5,1),(28,13,3,30,2,3),(29,14,1,10,3,1),(30,14,2,22,2,4),(31,15,6,60,2,3);
+INSERT INTO `orderline` VALUES (27,13,2,24,5,1),(28,13,3,30,2,3),(29,14,1,10,3,1),(30,14,2,22,2,4),(32,16,3,30,3,2),(33,17,1,10,1,1),(34,18,3,30,2,2),(35,19,2,20,2,1);
 /*!40000 ALTER TABLE `orderline` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,8 +142,9 @@ CREATE TABLE `user` (
   `password` varchar(45) NOT NULL,
   `role` varchar(45) NOT NULL,
   `saldo` int(11) NOT NULL,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,7 +153,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin@cupcake.com','1234','admin',0),(2,'test@test.com','test','customer',259);
+INSERT INTO `user` VALUES (1,'admin@cupcake.com','1234','admin',0),(2,'test@test.com','test','customer',170),(3,'bornholm@mail.com','4321','customer',490),(4,'thomsen@mail.com','bornholm','customer',500),(5,'hej@hej.com','hej','customer',500),(6,'bjarne@bholm.dk','1234','customer',470),(7,'someone@somewhere.com','1234','customer',480);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -165,4 +166,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-30 12:00:55
+-- Dump completed on 2020-03-30 21:45:37

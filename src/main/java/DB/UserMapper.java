@@ -36,7 +36,7 @@ public class UserMapper {
             int id = ids.getInt( 1 );
             user.setId( id );
         } catch (SQLException ex) {
-            throw new LoginSampleException( ex.getMessage() );
+            throw new LoginSampleException("Der findes allerede en bruger med den email");
         }
     }
 
