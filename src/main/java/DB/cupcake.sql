@@ -57,7 +57,7 @@ CREATE TABLE `order` (
   PRIMARY KEY (`order_id`),
   KEY `fk_user_id_idx` (`user_id`),
   CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +66,7 @@ CREATE TABLE `order` (
 
 LOCK TABLES `order` WRITE;
 /*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES (1,'2020-03-17',2,'Completed'),(2,'2020-03-18',2,''),(3,'2020-03-28',2,''),(4,'2020-03-17',2,''),(5,'2020-03-18',2,''),(6,'2020-03-19',2,''),(7,'2020-03-19',2,''),(8,'2020-03-19',2,''),(9,'2020-03-19',2,'Completed'),(10,'2020-03-22',2,'Bestilt');
+INSERT INTO `order` VALUES (12,'2020-03-29',2,'Processing'),(13,'2020-03-29',2,'Processing'),(14,'2020-03-29',2,'Processing'),(15,'2020-03-29',2,'Processing');
 /*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,9 +89,9 @@ CREATE TABLE `orderline` (
   KEY `fk_bottom_id_idx` (`bottom_id`),
   KEY `fk_topping_id_idx` (`topping_id`),
   CONSTRAINT `fk_bottom_id` FOREIGN KEY (`bottom_id`) REFERENCES `bottom` (`bottom_id`),
-  CONSTRAINT `fk_order_id` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`),
+  CONSTRAINT `fk_order_id` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON DELETE CASCADE,
   CONSTRAINT `fk_topping_id` FOREIGN KEY (`topping_id`) REFERENCES `topping` (`topping_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +100,7 @@ CREATE TABLE `orderline` (
 
 LOCK TABLES `orderline` WRITE;
 /*!40000 ALTER TABLE `orderline` DISABLE KEYS */;
-INSERT INTO `orderline` VALUES (1,2,2,20,1,1),(2,3,4,40,1,1),(3,4,1,10,1,1),(4,4,2,17,2,5),(5,5,3,39,3,7),(6,5,2,22,3,5),(7,6,2,20,1,1),(8,6,3,36,3,6),(9,6,2,28,4,8),(10,7,1,10,1,1),(11,7,1,10,1,1),(12,7,1,10,1,1),(13,7,1,10,1,1),(14,7,1,10,1,1),(15,8,1,10,1,1),(16,8,1,10,1,1),(17,8,1,10,1,1),(18,8,1,10,1,1),(19,9,3,30,2,1),(20,9,4,56,5,6),(21,9,2,22,4,1),(22,10,5,55,3,5),(23,10,3,39,5,4);
+INSERT INTO `orderline` VALUES (26,12,4,40,1,3),(27,13,2,24,5,1),(28,13,3,30,2,3),(29,14,1,10,3,1),(30,14,2,22,2,4),(31,15,6,60,2,3);
 /*!40000 ALTER TABLE `orderline` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,7 +152,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin@cupcake.com','1234','admin',0),(2,'test@test.com','test','customer',624);
+INSERT INTO `user` VALUES (1,'admin@cupcake.com','1234','admin',0),(2,'test@test.com','test','customer',259);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -165,4 +165,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-23 18:46:59
+-- Dump completed on 2020-03-30 12:00:55
