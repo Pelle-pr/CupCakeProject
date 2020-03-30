@@ -19,37 +19,7 @@ import java.util.Set;
 
 public class OrderMapper {
 
-    /**
-     * Indsætter ordre i databasen
-     * @param userId
-     * @param date
-     * @return Order ID
-     */
 
-    public static int insertOrder(int userId, String date) {
-
-        int result = 0;
-        int orderId = 0;
-        String sql = "INSERT INTO order (user_id, date) VALUES (?, ?)";
-
-        try {
-            Connection con = Connector.connection();
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, userId);
-            ps.setString(2, date);
-            result = ps.executeUpdate();
-            ResultSet idResultSet = ps.getGeneratedKeys();
-            if (idResultSet.next()) {
-                orderId = idResultSet.getInt(1);
-            }
-
-        } catch (SQLException | LoginSampleException e) {
-            System.out.println("Feil i connection til database!");
-            e.printStackTrace();
-        }
-
-        return orderId;
-    }
 
     /**
      * Klarer både at indsætte orderline(s) og ordre i databasen vha. SQL-transaction
@@ -207,6 +177,30 @@ public class OrderMapper {
             System.out.println("Fejl i connection til database");
             e.printStackTrace();
         }
+    }
+
+    public static void deleteOrder (int order_id) throws LoginSampleException, SQLException {
+        String sql1 ="DELETE FROM cupcake.order WHERE order_id = ? ";
+        String sql2 = "DELETE FROM cupcake.orderline WHERE order_id = ?";
+
+        try  {
+            Connection con = Connector.connection();
+            con.setAutoCommit(false);
+            try (PreparedStatement ps = con.prepareStatement(sql1)) {
+                ps.setInt(1, order_id);
+                try (PreparedStatement ps1 = con.prepareStatement(sql2)){
+                    ps1.setInt(1,order_id);
+                }
+                ps.executeUpdate();
+            }
+            con.commit();
+            con.setAutoCommit(true);
+
+        } catch (SQLException e) {
+            System.out.println("Fejl i connection til database");
+            e.printStackTrace();
+        }
+
     }
 }
 

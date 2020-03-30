@@ -41,6 +41,11 @@
                         <button type="submit" class="button" name="complete" value="${adminorder.order_id}">Complete
                         </button>
                     </form>
+                    <form name="delete" action="FrontController" method="POST">
+                        <input type="hidden" name="target" value="deleteorder">
+                        <button type="submit" class="button" name="delete" value="${adminorder.order_id}">Delete
+                        </button>
+                    </form>
                 </td>
             </tr>
         </c:forEach>

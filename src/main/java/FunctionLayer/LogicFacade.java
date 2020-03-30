@@ -4,6 +4,8 @@ import DB.BottomMapper;
 import DB.OrderMapper;
 import DB.ToppingMapper;
 import DB.UserMapper;
+import com.sun.org.apache.xpath.internal.operations.Or;
+import sun.rmi.runtime.Log;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -50,6 +52,9 @@ public class LogicFacade {
 
     public static void transaction (int user_id, Basket basket) throws LoginSampleException, SQLException {
         OrderMapper.transaction(user_id, basket);
+    }
+    public static void deleteOrder (int order_id) throws LoginSampleException, SQLException{
+        OrderMapper.deleteOrder(order_id);
     }
 
 }
